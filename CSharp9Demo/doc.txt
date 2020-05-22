@@ -1,0 +1,5 @@
+﻿https://github.com/dotnet/roslyn/blob/master/docs/Language%20Feature%20Status.md
+
+https://devblogs.microsoft.com/dotnet/welcome-to-c-9-0/
+
+https://github.com/SahebIrani/SinjulMSBHArchiveCodes/tree/CSharp9Demo/CSharp9Demo
