@@ -1,0 +1,93 @@
+﻿@page "/"
+@inject IJSRuntime js;
+
+<article class="border rounded text-center py-4">
+
+    <h1>Hello, world!</h1>
+
+    Welcome to your new app.
+
+    <SurveyPrompt Title="How is Blazor working for you?" />
+
+</article>
+
+<article class="border rounded text-center  mt-4  py-4">
+
+    <h1 class="display-4 text-primary">Play MP3 Files .. !!!!</h1>
+
+    <button class="btn btn-primary" @onclick="PlayAudioFile1">Duh</button>
+    <span>&nbsp;</span>
+    <button class="btn btn-primary" @onclick="PlayAudioFile2">Dwayne</button>
+
+    <audio id="player">
+        <source id="playerSource" src="" />
+    </audio>
+
+</article>
+
+<article class="border rounded text-center mt-4 py-4">
+
+    <h1 class="display-4 text-info">
+        PLAY MULTIPLE AUDIO FILES SIMULTANEOUSLY .. !!!!
+    </h1>
+
+    <button class="btn btn-info" @onclick="PlayAudioFile3">Duh</button>
+    <span>&nbsp;</span>
+    <button class="btn btn-info" @onclick="PlayAudioFile4">Dwayne</button>
+
+    <audio id="player1">
+        <source id="playerSource1" src="" />
+    </audio>
+    <audio id="player2">
+        <source id="playerSource2" src="" />
+    </audio>
+
+</article>
+
+<article class="border rounded text-center mt-4 py-4">
+
+    <h1 class="display-4 text-success">
+        LOAD AND PLAY AUDIO DYNAMICALLY .. !!!!
+    </h1>
+    <button class="btn btn-success" @onclick="PlayAudioFile5">Duh</button>
+    <span>&nbsp;</span>
+    <button class="btn btn-success" @onclick="PlayAudioFile6">Dwayne</button>
+
+</article>
+
+@code
+{
+    async Task PlayAudioFile1()
+    {
+        await js.InvokeVoidAsync("PlayAudioFile", "/sounds/duh.mp3");
+    }
+
+    async Task PlayAudioFile2()
+    {
+        await js.InvokeVoidAsync("PlayAudioFile", "/sounds/dwayne.mp3");
+    }
+
+
+    async Task PlayAudioFile3()
+    {
+        await js.InvokeVoidAsync("PlayAudioFile2", "1", "/sounds/duh.mp3");
+    }
+
+    async Task PlayAudioFile4()
+    {
+        await js.InvokeVoidAsync("PlayAudioFile2", "2", "/sounds/dwayne.mp3");
+
+    }
+
+
+    async Task PlayAudioFile5()
+    {
+        await js.InvokeVoidAsync("PlayAudioFile3", "/sounds/duh.mp3");
+    }
+
+    async Task PlayAudioFile6()
+    {
+        await js.InvokeVoidAsync("PlayAudioFile3", "/sounds/dwayne.mp3");
+
+    }
+}
