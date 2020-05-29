@@ -1,0 +1,7 @@
+﻿https://devblogs.microsoft.com/visualstudio/building-a-progressive-web-app-with-blazor/
+
+dotnet new blazorwasm -o BlazorPwaTodo --pwa --hosted
+
+dotnet .\BlazorPWA.Server.dll
+
+ngrok http https://localhost:5004 -host-header="localhost:5004"
