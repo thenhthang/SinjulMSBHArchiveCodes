@@ -5,3 +5,24 @@ dotnet new blazorwasm -o BlazorPwaTodo --pwa --hosted
 dotnet .\BlazorPWA.Server.dll
 
 ngrok http https://localhost:5004 -host-header="localhost:5004"
+
+
+
+
+
+
+
+
+
+https://devblogs.microsoft.com/visualstudio/building-a-progressive-web-app-with-blazor/
+https://dashboard.ngrok.com/get-started/tutorials
+https://www.jerriepelser.com/blog/using-ngrok-with-aspnet-core/
+https://docs.microsoft.com/en-us/aspnet/core/blazor/progressive-web-app?view=aspnetcore-3.1&tabs=visual-studio%22%20\l%20%22offline-support
+https://github.com/dotnet-presentations/blazor-workshop/blob/master/docs/09-progressive-web-app.md#sending-push-notifications
+https://github.com/dotnet-presentations/blazor-workshop/blob/master/docs/09-progressive-web-app.md#displaying-notifications
+https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API
+https://docs.microsoft.com/en-us/aspnet/core/blazor/progressive-web-app?view=aspnetcore-3.1&tabs=visual-studio%22%20\l%20%22offline-support#background-updates
+https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration
+https://github.com/SahebIrani/SinjulMSBHArchiveCodes/tree/BlazorPwaTodo/BlazorPwaTodo
+https://github.com/dotnet-presentations/blazor-workshop
+https://github.com/dotnet-presentations/blazor-workshop/
