@@ -8,7 +8,7 @@ ngrok http https://localhost:5004 -host-header="localhost:5004"
 
 
 
-
+https://github.com/dotnet-presentations/blazor-workshop/blob/master/docs/09-progressive-web-app.md
 
 
 

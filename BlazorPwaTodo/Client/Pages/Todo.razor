@@ -1,5 +1,11 @@
 ﻿@page "/todo"
 
+@inject HttpClient Client
+
+@inject IJSRuntime JSRuntime
+
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+
 <h3>Todo (@todos.Count(todo => !todo.IsDone))</h3>
 
 <ul>
@@ -16,6 +22,7 @@
 <button @onclick="AddTodo">Add todo</button>
 
 @code {
+
     private IList<TodoItem> todos = new List<TodoItem>();
     private string newTodo;
 
@@ -27,4 +34,36 @@
             newTodo = string.Empty;
         }
     }
+
+    protected override async Task OnInitializedAsync()
+    {
+        // In the background, ask if they want to be notified about order updates
+        //_ = RequestNotificationSubscriptionAsync();
+
+        await RequestNotificationSubscriptionAsync();
+    }
+
+    async Task RequestNotificationSubscriptionAsync()
+    {
+        var subscription = await JSRuntime
+            .InvokeAsync<NotificationSubscription>(
+                "blazorPushNotifications.requestSubscription"
+            )
+        ;
+
+        if (subscription != null)
+        {
+            try
+            {
+                //await Client.SubscribeToNotifications(subscription);
+                await Client.PostAsJsonAsync("api/Notification/Subscribe", subscription);
+            }
+            catch (AccessTokenNotAvailableException ex)
+            {
+                ex.Redirect();
+            }
+        }
+    }
+
+
 }
