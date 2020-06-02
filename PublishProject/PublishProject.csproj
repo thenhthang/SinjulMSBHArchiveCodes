@@ -1,0 +1,49 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <SatelliteResourceLanguages>ru;en-US</SatelliteResourceLanguages>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" 
+                          Version="5.0.0-preview.4.20261.3" ExcludeAssets="All" />
+    </ItemGroup>
+
+    <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+        <Exec Command="rd /s /q 
+            &quot;de&quot;, &quot;en&quot;, &quot;es&quot;, &quot;fr&quot;, &quot;it&quot;,&quot;ja&quot;, 
+            &quot;ko&quot;, &quot;ru&quot;, &quot;zh-Hans&quot;,&quot;zh-Hant&quot;&#xD;&#xA;&#xD;&#xA;RD /S /Q
+            
+            &quot;$(TargetDir)cs\&quot;&#xD;&#xA;RD /S /Q &quot;$(TargetDir)da\&quot;&#xD;&#xA;RD /S /Q 
+            &quot;$(TargetDir)de\&quot;&#xD;&#xA;RD /S /Q &quot;$(TargetDir)es\&quot;&#xD;&#xA;RD /S /Q 
+            &quot;$(TargetDir)fa\&quot;&#xD;&#xA;RD /S /Q &quot;$(TargetDir)fi\&quot;&#xD;&#xA;RD /S /Q
+            &quot;$(TargetDir)fr\&quot;&#xD;&#xA;RD /S /Q &quot;$(TargetDir)it\&quot;&#xD;&#xA;RD /S /Q
+            &quot;$(TargetDir)ko\&quot;&#xD;&#xA;RD /S /Q &quot;$(TargetDir)mk\&quot;&#xD;&#xA;RD /S /Q 
+            &quot;$(TargetDir)nl\&quot;&#xD;&#xA;RD /S /Q &quot;$(TargetDir)pl\&quot;&#xD;&#xA;RD /S /Q 
+            &quot;$(TargetDir)pt\&quot;&#xD;&#xA;RD /S /Q &quot;$(TargetDir)ru\&quot;&#xD;&#xA;RD /S /Q
+            &quot;$(TargetDir)sv\&quot;&#xD;&#xA;RD /S /Q &quot;$(TargetDir)tr\&quot;&#xD;&#xA;RD /S /Q
+            &quot;$(TargetDir)zh-CN\&quot;" />
+    </Target>
+    
+    <Target Name="RemoveSatellitesFromPublish" AfterTargets="ComputeFilesToPublish">
+        <ItemGroup>
+            <ResolvedFileToPublish Remove="@(ReferenceSatellitePaths)" />
+        </ItemGroup>
+    </Target>
+
+    <Target Name="AfterPackage" AfterTargets="CopyAllFilesToSingleFolderForPackage" />
+    <ItemGroup>
+        <FluentValidationExcludedCultures Include="cs;da;de;es;fa;fi;fr;it;ko;mk;nl;pl;pt;ru;sv;tr;zh-CN">
+            <InProject>false</InProject>
+        </FluentValidationExcludedCultures>
+    </ItemGroup>
+    <Target Name="RemoveTranslationsAfterBuild" AfterTargets="AfterBuild">
+        <RemoveDir Directories="@(FluentValidationExcludedCultures->'$(OutputPath)%(Filename)')" />
+    </Target>
+    <Target Name="RemoveTranslationsAfterPackage" AfterTargets="AfterPackage">
+        <RemoveDir Directories="@(FluentValidationExcludedCultures->'$(_PackageTempDir)\$(OutputPath)%(Filename)')" />
+    </Target>
+  
+
+</Project>
