@@ -12,6 +12,8 @@
         </ExcludeFoldersFromDeployment>
     </PropertyGroup>
 
+    <!--<PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="3.1.0" />-->
+
     <ItemGroup>
         <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design"
                           Version="5.0.0-preview.4.20261.3" ExcludeAssets="All" />
