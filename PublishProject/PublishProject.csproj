@@ -5,8 +5,15 @@
         <SatelliteResourceLanguages>ru;en-US</SatelliteResourceLanguages>
     </PropertyGroup>
 
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+        <ExcludeFoldersFromDeployment>
+            bin\ar;bin\cs;bin\de;bin\es;bin\fr;bin\he;bin\hi;bin\it;bin\ja;bin\ko;
+            bin\nl;bin\pl;bin\pt;bin\ru;bin\tr-TR;bin\zh-Hans;bin\zh-Hant
+        </ExcludeFoldersFromDeployment>
+    </PropertyGroup>
+
     <ItemGroup>
-        <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" 
+        <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design"
                           Version="5.0.0-preview.4.20261.3" ExcludeAssets="All" />
     </ItemGroup>
 
@@ -15,17 +22,18 @@
             &quot;de&quot;, &quot;en&quot;, &quot;es&quot;, &quot;fr&quot;, &quot;it&quot;,&quot;ja&quot;, 
             &quot;ko&quot;, &quot;ru&quot;, &quot;zh-Hans&quot;,&quot;zh-Hant&quot;&#xD;&#xA;&#xD;&#xA;RD /S /Q
             
+            &quot;$(TargetDir)es\&quot;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;RMDIR &quot;$(TargetDir)de/&quot; /S /Q&#xD;&#xA;RMDIR &quot;$(TargetDir)es/&quot; /S /Q &#xD;&#xA;RMDIR &quot;$(TargetDir)fr/&quot; /S /Q&#xD;&#xA;RMDIR &quot;$(TargetDir)it/&quot; /S /Q&#xD;&#xA;RMDIR &quot;$(TargetDir)ja/&quot; /S /Q&#xD;&#xA;RMDIR &quot;$(TargetDir)ko/&quot; /S /Q&#xD;&#xA;RMDIR &quot;$(TargetDir)ru/&quot; /S /Q&#xD;&#xA;RMDIR &quot;$(TargetDir)zh-Hans/&quot; /S /Q&#xD;&#xA;RMDIR &quot;$(TargetDir)zh-Hant/&quot; /S /QRD /S /Q 
             &quot;$(TargetDir)cs\&quot;&#xD;&#xA;RD /S /Q &quot;$(TargetDir)da\&quot;&#xD;&#xA;RD /S /Q 
-            &quot;$(TargetDir)de\&quot;&#xD;&#xA;RD /S /Q &quot;$(TargetDir)es\&quot;&#xD;&#xA;RD /S /Q 
+            &quot;$(TargetDir)de\&quot;&#xD;&#xA;RD /S /Q &quot;$(TargetDir)zh-CN\&quot;
             &quot;$(TargetDir)fa\&quot;&#xD;&#xA;RD /S /Q &quot;$(TargetDir)fi\&quot;&#xD;&#xA;RD /S /Q
             &quot;$(TargetDir)fr\&quot;&#xD;&#xA;RD /S /Q &quot;$(TargetDir)it\&quot;&#xD;&#xA;RD /S /Q
             &quot;$(TargetDir)ko\&quot;&#xD;&#xA;RD /S /Q &quot;$(TargetDir)mk\&quot;&#xD;&#xA;RD /S /Q 
             &quot;$(TargetDir)nl\&quot;&#xD;&#xA;RD /S /Q &quot;$(TargetDir)pl\&quot;&#xD;&#xA;RD /S /Q 
             &quot;$(TargetDir)pt\&quot;&#xD;&#xA;RD /S /Q &quot;$(TargetDir)ru\&quot;&#xD;&#xA;RD /S /Q
             &quot;$(TargetDir)sv\&quot;&#xD;&#xA;RD /S /Q &quot;$(TargetDir)tr\&quot;&#xD;&#xA;RD /S /Q
-            &quot;$(TargetDir)zh-CN\&quot;" />
+        "/>
     </Target>
-    
+
     <Target Name="RemoveSatellitesFromPublish" AfterTargets="ComputeFilesToPublish">
         <ItemGroup>
             <ResolvedFileToPublish Remove="@(ReferenceSatellitePaths)" />
@@ -44,6 +52,6 @@
     <Target Name="RemoveTranslationsAfterPackage" AfterTargets="AfterPackage">
         <RemoveDir Directories="@(FluentValidationExcludedCultures->'$(_PackageTempDir)\$(OutputPath)%(Filename)')" />
     </Target>
-  
+
 
 </Project>

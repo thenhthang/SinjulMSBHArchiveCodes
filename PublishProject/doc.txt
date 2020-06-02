@@ -1,0 +1,35 @@
+﻿https://stackoverflow.com/questions/48424796/net-core-build-produces-localization-folders
+
+https://github.com/FluentValidation/FluentValidation/issues/254
+
+https://stackoverflow.com/questions/48893450/visual-studio-2017-localization-publish-settings
+
+rd /s /q "de", "en", "es", "fr", "it", "ja", "ko", "ru", "zh-Hans", "zh-Hant"
+
+RD /S /Q "$(TargetDir)cs\"
+RD /S /Q "$(TargetDir)da\"
+RD /S /Q "$(TargetDir)de\"
+RD /S /Q "$(TargetDir)es\"
+RD /S /Q "$(TargetDir)fa\"
+RD /S /Q "$(TargetDir)fi\"
+RD /S /Q "$(TargetDir)fr\"
+RD /S /Q "$(TargetDir)it\"
+RD /S /Q "$(TargetDir)ko\"
+RD /S /Q "$(TargetDir)mk\"
+RD /S /Q "$(TargetDir)nl\"
+RD /S /Q "$(TargetDir)pl\"
+RD /S /Q "$(TargetDir)pt\"
+RD /S /Q "$(TargetDir)ru\"
+RD /S /Q "$(TargetDir)sv\"
+RD /S /Q "$(TargetDir)tr\"
+RD /S /Q "$(TargetDir)zh-CN\"
+
+RMDIR "$(TargetDir)de/" /S /Q
+RMDIR "$(TargetDir)es/" /S /Q 
+RMDIR "$(TargetDir)fr/" /S /Q
+RMDIR "$(TargetDir)it/" /S /Q
+RMDIR "$(TargetDir)ja/" /S /Q
+RMDIR "$(TargetDir)ko/" /S /Q
+RMDIR "$(TargetDir)ru/" /S /Q
+RMDIR "$(TargetDir)zh-Hans/" /S /Q
+RMDIR "$(TargetDir)zh-Hant/" /S /Q
