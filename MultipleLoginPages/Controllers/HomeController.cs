@@ -44,7 +44,7 @@ namespace MultipleLoginPages.Controllers
         public ContentResult AdminAccount() => Content(nameof(AdminAccount));
 
         //[Authorize(policy: "Customer_Policy", AuthenticationSchemes = "Client_Scheme")]
-        [Authorize(Roles = "Customer_Role", AuthenticationSchemes = "Admin_Scheme")]
+        [Authorize(Roles = "Customer_Role", AuthenticationSchemes = "Client_Scheme")]
         public ContentResult CustomerAccount() => Content(nameof(CustomerAccount));
 
 
