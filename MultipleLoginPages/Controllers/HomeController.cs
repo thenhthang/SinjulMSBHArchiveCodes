@@ -39,12 +39,12 @@ namespace MultipleLoginPages.Controllers
 
 
 
-        //[Authorize(policy: "Admin_Policy", AuthenticationSchemes = "Admin_Scheme")]
-        [Authorize(Roles = "Admin_Role", AuthenticationSchemes = "Admin_Scheme")]
+        [Authorize(policy: "Admin_Policy", AuthenticationSchemes = "Admin_Scheme")]
+        //[Authorize(Roles = "Admin_Role", AuthenticationSchemes = "Admin_Scheme")]
         public ContentResult AdminAccount() => Content(nameof(AdminAccount));
 
-        //[Authorize(policy: "Customer_Policy", AuthenticationSchemes = "Client_Scheme")]
-        [Authorize(Roles = "Customer_Role", AuthenticationSchemes = "Client_Scheme")]
+        [Authorize(policy: "Customer_Policy", AuthenticationSchemes = "Client_Scheme")]
+        //[Authorize(Roles = "Customer_Role", AuthenticationSchemes = "Client_Scheme")]
         public ContentResult CustomerAccount() => Content(nameof(CustomerAccount));
 
 
