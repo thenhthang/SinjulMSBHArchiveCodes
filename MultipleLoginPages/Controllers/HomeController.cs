@@ -2,6 +2,8 @@
 
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.Extensions.Logging;
 
 using MultipleLoginPages.Models;
@@ -12,9 +14,17 @@ namespace MultipleLoginPages.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private IUrlHelperFactory _helper;
+        private IActionContextAccessor _accessor;
+
+        public HomeController(
+            ILogger<HomeController> logger,
+            IUrlHelperFactory helper,
+            IActionContextAccessor accessor)
         {
             _logger = logger;
+            _helper = helper;
+            _accessor = accessor;
         }
 
         public IActionResult Index()
@@ -35,15 +45,16 @@ namespace MultipleLoginPages.Controllers
 
 
 
-
-
-
-
-        [Authorize(policy: "Admin_Policy", AuthenticationSchemes = "Admin_Scheme")]
+        [Authorize(Roles = "Admin_Role")]
+        //[CustomAuthorize(loginSchemeName: "Admin")]
+        //[Authorize(AuthenticationSchemes = "Admin_Scheme")]
+        //[Authorize(policy: "Admin_Policy", AuthenticationSchemes = "Admin_Scheme")]
         //[Authorize(Roles = "Admin_Role", AuthenticationSchemes = "Admin_Scheme")]
         public ContentResult AdminAccount() => Content(nameof(AdminAccount));
 
-        [Authorize(policy: "Customer_Policy", AuthenticationSchemes = "Client_Scheme")]
+        [Authorize(Roles = "Customer_Role")]
+        //[Authorize(AuthenticationSchemes = "Client_Scheme")]
+        //[Authorize(policy: "Customer_Policy", AuthenticationSchemes = "Client_Scheme")]
         //[Authorize(Roles = "Customer_Role", AuthenticationSchemes = "Client_Scheme")]
         public ContentResult CustomerAccount() => Content(nameof(CustomerAccount));
 
