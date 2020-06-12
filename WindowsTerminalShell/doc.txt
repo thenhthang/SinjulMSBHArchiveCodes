@@ -1,0 +1,50 @@
+﻿"startingDirectory": "."
+"New → Text Document" to create a new text file. Name the text file as "wt.reg".
+
+
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\wt]
+ @="Open Windows Terminal here (SinjulMSBH)"
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\wt\command]
+ @="C:\\Users\\sinju\\AppData\\Local\\Microsoft\\WindowsApps\\wt.exe"
+
+That is it. From now on, whenever you Shift + Right-click in a directory or folder,
+ you will see the new "Open Windows Terminal here" option in the right-click menu.
+
+(Optional) Add Icon to the Option
+Download this official Windows Terminal icon.
+https://raw.githubusercontent.com/microsoft/terminal/master/res/terminal.ico
+
+%USERPROFILE%/AppData/Local/
+C:\Users\sinju\AppData\Local\WTerminal
+In this folder, right-click and select "New → Folder" to create a new folder. Name the folder as "WTerminal".
+
+HKEY_CLASSES_ROOT\Directory\Background\shell\wt
+Right-click on the right-panel and select the "New → String Value" option. Name the value as "Icon".
+%USERPROFILE%/AppData/Local/WTerminal/terminal.ico
+
+
+https://github-production-release-asset-2e65be.s3.amazonaws.com/49609581/5a5c1280-abe7-11ea-88a2-4815f124fd42?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20200612%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20200612T073938Z&X-Amz-Expires=300&X-Amz-Signature=e226e9f4261e8bcd47872aea45ae1d28113538d3c21ac2e970295e9543861996&X-Amz-SignedHeaders=host&actor_id=22368395&repo_id=49609581&response-content-disposition=attachment%3B%20filename%3DPowerShell-7.0.2-win-x64.msi&response-content-type=application%2Foctet-stream
+https://dl2.soft98.ir/soft/w/Win.X.Menu.Editor.3.0.0.0.rar?1591946762
+https://download.microsoft.com/download/3/1/1/311C06C1-F162-405C-B538-D9DC3A4007D1/WindowsUCRT.zip
+
+ 
+Install Windows Terminal. https://github.com/microsoft/terminal
+
+Install PowerShell 7. https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-7
+
+Quickest way to run the latest script from GitHub at an elevated PowerShell 7 console is
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/lextm/windowsterminal-shell/master/install.ps1'))
+
+
+
+
+
+https://github.com/lextm/windowsterminal-shell
+https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-7
+https://www.microsoft.com/en-us/download/details.aspx?id=50410
+https://github.com/PowerShell/PowerShell/releases/tag/v7.0.2
+https://www.hanselman.com/blog/TotallyUnsupportedHacksAddWindowsTerminalToTheWinXShortcutMenu.aspx
+https://windowsloop.com/add-open-windows-terminal-here-option-to-right-click-menu/

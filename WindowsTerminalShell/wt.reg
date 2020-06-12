@@ -1,0 +1,7 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\wt]
+ @="Open Windows Terminal here (SinjulMSBH)"
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\wt\command]
+ @="C:\\Users\\sinju\\AppData\\Local\\Microsoft\\WindowsApps\\wt.exe"
