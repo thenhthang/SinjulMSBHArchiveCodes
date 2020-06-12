@@ -1,0 +1,92 @@
+﻿Creating a new route
+// v1
+GET https://example.com/api/weatherforecast
+
+// v2
+GET https://example.com/api/weatherforecast2
+
+
+
+
+Adding the version in the query string
+// v1
+GET https://example.com/api/weatherforecast?api-version=1.0
+
+// v2
+GET https://example.com/api/weatherforecast?api-version=2.0
+
+
+
+
+Adding the version in the header
+// v1
+GET https://example.com/api/weatherforecast
+X-API-VERSION: 1.0
+
+// v2
+GET https://example.com/api/weatherforecast
+X-API-VERSION: 2.0
+
+
+
+
+Adding the version in the header Accept
+// v1
+GET https://example.com/api/weatherforecast
+Accept: application/json;v=1.0
+
+// v2
+GET https://example.com/api/weatherforecast
+Accept: application/json;v=2.0
+
+
+
+
+Using the request path to define the version
+// v1
+GET https://example.com/api/v1.0/weatherforecast
+
+// v2
+GET https://example.com/api/v2.0/weatherforecast
+
+
+
+<ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="4.1.1" />
+</ItemGroup>
+
+
+You can now query the url https://localhost:44354/helloworld?api-version=2.0 and check the result:
+
+https://localhost:44354/helloworld?api-version=1
+https://localhost:44354/helloworld?api-version=2.0
+https://localhost:44354/helloworld?api-version=2.1
+
+
+In the previous example, the client can use the query string or a specific header to specify the API version.
+If you want to use the path, such as https://localhost:44354/v2.0/helloworld, you need to change the route:
+
+    // Will match "/v1.0/HelloWorld" and "/HelloWorld?api-version=1.0"
+https://localhost:44354/helloworld?api-version=1.0
+https://localhost:44354/v1.0/HelloWorld
+
+
+
+#Integration with OpenAPI Specification (Swagger)
+<ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.4.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="4.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="4.1.1" />
+</ItemGroup>
+
+https://localhost:44354/swagger/v1/swagger.json
+https://localhost:44354/swagger/v2/swagger.json
+https://localhost:44354/swagger/v2.1/swagger.json
+
+
+
+
+
+
+https://www.meziantou.net/versioning-an-asp-net-core-api.htm
+http://www.leerichardson.com/2020/05/mastering-external-web-apis-in-aspnet.html
