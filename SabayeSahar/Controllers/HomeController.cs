@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 using SabayeSahar.Data;
@@ -23,21 +24,42 @@ namespace SabayeSahar.Controllers
             [FromServices] ApplicationDbContext context,
             CancellationToken cancellationToken = default)
         {
-            Student student = new Student("Sinjul", "MSBH", "09215892274");
+            Student student = new Student(firstName: "Sinjul", lastName: "MSBH", phoneNumber: "09215892274")
+            {
+                //Id = 19 //! 19 == duplicate 
+                Id = 26 //! 26 == unique
+            };
 
-            Order order = new Order(student, 13, 1300);
+            Order order = new Order(student: student, payTypeId: 13, amountPayed: 1300);
 
             await context.Orders.AddAsync(order, cancellationToken);
-            await context.SaveChangesAsync(cancellationToken);
 
-            //◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘
+            //? SqlException: Cannot insert explicit value for identity column in table 'Students' when IDENTITY_INSERT is set to OFF.
+            //? await context.SaveChangesAsync(cancellationToken);
 
-            Order order2 = new Order(student.Id, 13000, "13", true);
+            await ConnectionExecuteAsync(context, cancellationToken);
 
-            await context.Orders.AddAsync(order2, cancellationToken);
-            await context.SaveChangesAsync(cancellationToken);
+            return Ok(new { student, order });
 
-            return Ok(new { student, order, order2 });
+            static async Task ConnectionExecuteAsync(ApplicationDbContext context, CancellationToken cancellationToken = default)
+            {
+                await context.Database.OpenConnectionAsync(cancellationToken);
+                try
+                {
+                    //? SqlException: Violation of PRIMARY KEY constraint 'PK_Students'. 
+                    //? Cannot insert duplicate key in object 'dbo.Students'.
+                    //? The duplicate key value is (19).
+                    await context.Database.ExecuteSqlRawAsync("SET IDENTITY_INSERT dbo.Students ON", cancellationToken);
+
+                    await context.SaveChangesAsync(cancellationToken);
+
+                    await context.Database.ExecuteSqlRawAsync("SET IDENTITY_INSERT dbo.Students OFF", cancellationToken);
+                }
+                finally
+                {
+                    await context.Database.CloseConnectionAsync();
+                }
+            }
         }
 
         public IActionResult Privacy()

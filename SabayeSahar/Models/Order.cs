@@ -17,7 +17,7 @@ namespace SabayeSahar.Models
         /// هنرجوی ثبت نام شده
         /// </summary>
         public virtual Student Student { get; private set; }
-        private int StudentId;
+        private int _studentId;
 
 
         /// <summary>
@@ -51,13 +51,19 @@ namespace SabayeSahar.Models
         }
 
 
-        public Order(int studentId, decimal amountPayed, string trackingCode, bool isPayed)
+        public Order(int studentId, decimal amountPayed, string trackingCode, bool isPayed, string authority)
         {
-            StudentId = studentId;
+            _studentId = studentId;
             DateTime = DateTime.UtcNow;
             AmountPayed = amountPayed;
             TrackingCode = trackingCode;
             IsPayed = isPayed;
+            Authority = authority;
+        }
+
+        public static implicit operator Order(int v)
+        {
+            throw new NotImplementedException();
         }
     }
     public class OrderConfiguration : IEntityTypeConfiguration<Order>
