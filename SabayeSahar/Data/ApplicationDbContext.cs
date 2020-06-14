@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+
+using SabayeSahar.Models;
 
 namespace SabayeSahar.Data
 {
@@ -13,5 +12,9 @@ namespace SabayeSahar.Data
             : base(options)
         {
         }
+
+
+        public DbSet<Student> Students { get; set; }
+        public DbSet<Order> Orders { get; set; }
     }
 }

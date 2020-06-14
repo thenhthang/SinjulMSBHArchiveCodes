@@ -23,7 +23,7 @@ namespace SabayeSahar.Models
         /// <summary>
         /// تاریخ تولد
         /// </summary>
-        public DateTime BirthDate { get; set; }
+        public DateTime BirthDate { get; set; } = DateTime.UtcNow;
 
         /// <summary>
         /// شماره تماس هنرجو

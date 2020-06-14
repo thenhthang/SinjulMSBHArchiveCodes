@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -26,6 +27,7 @@ namespace SabayeSahar.Models
         /// <summary>
         /// مبلغ پرداخت شده
         /// </summary>
+        [Column(TypeName = "decimal(18,2)")]
         public decimal AmountPayed { get; set; }
 
         /// <summary>
@@ -61,9 +63,14 @@ namespace SabayeSahar.Models
                 .WithMany()
                 .HasForeignKey("StudentId")
                 .OnDelete(DeleteBehavior.Restrict)
-                .IsRequired();
+                .IsRequired()
+            ;
 
-            builder.Property(q => q.AmountPayed).IsRequired().HasDefaultValue(0);
+            builder.Property(q => q.AmountPayed)
+                .IsRequired()
+                .HasColumnType("decimal(18,2)")
+                .HasDefaultValue(0)
+            ;
         }
     }
 }
