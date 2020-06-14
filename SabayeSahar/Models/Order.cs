@@ -17,7 +17,8 @@ namespace SabayeSahar.Models
         /// هنرجوی ثبت نام شده
         /// </summary>
         public virtual Student Student { get; private set; }
-        private int _studentId;    
+        private int StudentId;
+
 
         /// <summary>
         /// کد پیگیری دوره ثبت نام شده
@@ -49,6 +50,15 @@ namespace SabayeSahar.Models
         {
         }
 
+
+        public Order(int studentId, decimal amountPayed, string trackingCode, bool isPayed)
+        {
+            StudentId = studentId;
+            DateTime = DateTime.UtcNow;
+            AmountPayed = amountPayed;
+            TrackingCode = trackingCode;
+            IsPayed = isPayed;
+        }
     }
     public class OrderConfiguration : IEntityTypeConfiguration<Order>
     {

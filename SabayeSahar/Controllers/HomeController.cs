@@ -27,12 +27,17 @@ namespace SabayeSahar.Controllers
 
             Order order = new Order(student, 13, 1300);
 
-            await context.Students.AddAsync(student, cancellationToken);
             await context.Orders.AddAsync(order, cancellationToken);
-
             await context.SaveChangesAsync(cancellationToken);
 
-            return Ok(order);
+            //◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘◘
+
+            Order order2 = new Order(student.Id, 13000, "13", true);
+
+            await context.Orders.AddAsync(order2, cancellationToken);
+            await context.SaveChangesAsync(cancellationToken);
+
+            return Ok(new { student, order, order2 });
         }
 
         public IActionResult Privacy()
