@@ -1,0 +1,92 @@
+﻿https://blog.getbootstrap.com/2020/06/16/bootstrap-5-alpha/
+
+https://v5.getbootstrap.com/
+https://v5.getbootstrap.com/docs/5.0/getting-started/introduction/
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+
+
+
+Package managers
+
+npm install bootstrap@next
+
+yarn add bootstrap
+
+NuGet 
+Install-Package bootstrap
+Install-Package bootstrap.sass
+
+
+npm install bootstrap-icons
+
+
+
+Using npm scripts
+Task	Description
+npm start	Compiles CSS and JavaScript, builds the documentation, and starts a local server.
+npm run dist	Creates the dist/ directory with compiled files. Requires Sass, Autoprefixer, and terser.
+npm test	Runs tests locally after running npm run dist
+npm run docs-serve	Builds and runs the documentation locally.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Bootstrap 5 alpha! | Bootstrap Blog
+https://blog.getbootstrap.com/2020/06/16/bootstrap-5-alpha/
+
+Bootstrap · The most popular HTML, CSS, and JS library in the world.
+https://v5.getbootstrap.com/
+
+Forms · Bootstrap v5.0
+https://v5.getbootstrap.com/docs/5.0/forms/overview/
+
+twbs/rfs at v9.0.2
+https://github.com/twbs/rfs/tree/v9.0.2
+
+twbs/rfs at v9.0.2
+https://github.com/twbs/rfs/tree/v9.0.2#installation
+
+bootstrap/package.json at v5.0.0-alpha1 · twbs/bootstrap
+https://github.com/twbs/bootstrap/blob/v5.0.0-alpha1/package.json
+
+popper.js.org
+https://popper.js.org/
+
+Grid system · Bootstrap v5.0
+https://v5.getbootstrap.com/docs/5.0/layout/grid/
+
+Examples · Bootstrap v5.0
+https://v5.getbootstrap.com/docs/5.0/examples/
+
+Download · Bootstrap v5.0
+https://v5.getbootstrap.com/docs/5.0/getting-started/download/
+
+Examples · Bootstrap v5.0
+https://v5.getbootstrap.com/docs/5.0/examples/
+
+Bootstrap Icons · Official open source SVG icon library for Bootstrap
+https://icons.getbootstrap.com/
+
+Bootstrap Themes Built & Curated by the Bootstrap Team.
+https://themes.getbootstrap.com/
+
+Home page - Bootstrap5
+https://localhost:44375/

@@ -1,0 +1,152 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome  Bootstrapp 5 .. !!!!!</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<article class="container p-4 border text-center">
+
+    <svg class="bi bi-chevron-right" width="32" height="32" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6.646 3.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L12.293 10 6.646 4.354a.5.5 0 010-.708z" /></svg>
+
+    <img class="text-info" src="/lib/bootstrap-icons/icons/alarm-fill.svg" alt="" width="32" height="32" title="Bootstrap">
+
+    <svg class="bi bi-alert-triangle text-danger" width="64" height="64" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M6.646 3.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L12.293 10 6.646 4.354a.5.5 0 010-.708z" />
+    </svg>
+
+</article>
+
+
+@*Responsive containers*@
+<div class="container-sm">100% wide until small breakpoint</div>
+<div class="container-md">100% wide until medium breakpoint</div>
+<div class="container-lg">100% wide until large breakpoint</div>
+<div class="container-xl">100% wide until extra large breakpoint</div>
+<div class="container-xxl">100% wide until extra extra large breakpoint</div>
+
+<div class="container-fluid">
+    Fluid containers
+</div>
+
+
+<div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+        <div class="col">Column</div>
+        <div class="col">Column</div>
+        <div class="col">Column</div>
+        <div class="col">Column</div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">.col-md-4</div>
+        <div class="col-md-4 ml-auto">.col-md-4 .ml-auto</div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 ml-md-auto">.col-md-3 .ml-md-auto</div>
+        <div class="col-md-3 ml-md-auto">.col-md-3 .ml-md-auto</div>
+    </div>
+    <div class="row">
+        <div class="col-auto mr-auto">.col-auto .mr-auto</div>
+        <div class="col-auto">.col-auto</div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+        <div class="col">
+            <div class="p-3 border bg-light">Row column</div>
+        </div>
+        <div class="col">
+            <div class="p-3 border bg-light">Row column</div>
+        </div>
+        <div class="col">
+            <div class="p-3 border bg-light">Row column</div>
+        </div>
+        <div class="col">
+            <div class="p-3 border bg-light">Row column</div>
+        </div>
+        <div class="col">
+            <div class="p-3 border bg-light">Row column</div>
+        </div>
+        <div class="col">
+            <div class="p-3 border bg-light">Row column</div>
+        </div>
+        <div class="col">
+            <div class="p-3 border bg-light">Row column</div>
+        </div>
+        <div class="col">
+            <div class="p-3 border bg-light">Row column</div>
+        </div>
+        <div class="col">
+            <div class="p-3 border bg-light">Row column</div>
+        </div>
+        <div class="col">
+            <div class="p-3 border bg-light">Row column</div>
+        </div>
+    </div>
+</div>
+
+
+<div class="table-responsive">
+    <table class="table caption-top">
+        <caption>List of users</caption>
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@@mdo</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@@fat</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@@twitter</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="container pb-5">
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">
+            Default checkbox
+        </label>
+    </div>
+
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+        <label class="form-check-label" for="flexRadioDefault1">
+            Default radio
+        </label>
+    </div>
+
+    <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+        <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
+    </div>
+</div>
+
