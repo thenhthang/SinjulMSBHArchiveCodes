@@ -1,5 +1,8 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Security.Claims;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
@@ -26,7 +29,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 using MultipleLoginPages.Data;
-
+using MultipleLoginPages.Models;
 
 namespace MultipleLoginPages
 {
@@ -377,13 +380,57 @@ namespace MultipleLoginPages
 
             services.AddScoped<CustomCookieAuthenticationEvents>();
 
+
+
             services.ConfigureApplicationCookie(options =>
             {
                 options.Cookie.Name = "MultipleLoginPages";
 
-                options.EventsType = typeof(CustomCookieAuthenticationEvents);
+                options.Events = new CookieAuthenticationEvents
+                {
+                    OnRedirectToLogin = context =>
+                    {
+                        RouteValueDictionary routeValues = context.Request.RouteValues;
+                        string controllerName = routeValues["controller"].ToString() + "Controller";
+                        string actionName = routeValues["action"].ToString();
+
+                        Assembly asm = Assembly.GetAssembly(typeof(Startup));
+
+                        Type myType =
+                            AppDomain.CurrentDomain
+                                .GetAssemblies()
+                                .SelectMany(x => x.GetTypes())
+                                .First(x => x.Name == controllerName)
+                        ;
+
+                        IList<AuthorizeAttribute> controllerActionlistAutorizeAttributes = asm.GetTypes()
+                                .Where(type => myType.IsAssignableFrom(type))
+                                .SelectMany(type => type.GetMethods(BindingFlags.Instance | BindingFlags.DeclaredOnly | BindingFlags.Public))
+                                .Where(m => !m.GetCustomAttributes(typeof(CompilerGeneratedAttribute), true).Any())
+                                .Where(c => c.IsDefined(typeof(AuthorizeAttribute)))
+                                .Select(x => new ControllerActions
+                                {
+                                    Controller = x.DeclaringType.Name,
+                                    Action = x.Name,
+                                    AutorizeAttributes = x.GetCustomAttributes().OfType<AuthorizeAttribute>().ToList(),
+                                })
+                                .SingleOrDefault(_ => _.Controller == controllerName && _.Action == actionName)?
+                                .AutorizeAttributes
+                        ;
+
+                        if (controllerActionlistAutorizeAttributes.Any(_ => _.Roles.Contains("Admin_Role")))
+                            context.RedirectUri = "/Home/AdminAccountLogin";
+
+                        if (controllerActionlistAutorizeAttributes.Any(_ => _.Roles.Contains("Customer_Role")))
+                            context.RedirectUri = "/Home/CustomerAccountLogin";
+
+                        return Task.CompletedTask;
+                    }
+                };
 
                 #region Events
+
+                //options.EventsType = typeof(CustomCookieAuthenticationEvents);
 
                 //options.Events = new CookieAuthenticationEvents
                 //{

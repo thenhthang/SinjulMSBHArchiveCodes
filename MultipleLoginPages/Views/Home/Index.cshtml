@@ -1,8 +1,54 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model IEnumerable<ControllerActions>
+
+@{
+    ViewBag.Title = "GetAllControllerActions";
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+<br />
+<hr />
+<br />
+
+<h2>Get All Controller Actions</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Controller)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Action)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Attributes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReturnType)
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Controller)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Action)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Attributes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReturnType)
+            </td>
+
+        </tr>
+    }
+
+</table>
