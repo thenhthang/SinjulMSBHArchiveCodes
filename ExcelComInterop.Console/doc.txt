@@ -1,0 +1,187 @@
+﻿https://github.com/dotnet/project-system/issues/5735
+
+New netcoreapp3.1 console application
+Right-click Dependencies node
+Select "Add Reference..."
+Select "COM"
+Select "Microsoft Excel 16.0 Object Library"
+Reference a type within code (e.g. Microsoft.Office.Interop.Excel.Chart)
+Try to run the console app. It fails as described.
+Add <EmbedInteropTypes>True</EmbedInteropTypes>
+Running now works
+
+
+net5.0
+
+    <!--<ItemGroup>
+    <COMReference Include="Microsoft.Office.Excel.dll">
+      <Guid>00020813-0000-0000-c000-000000000046</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>9</VersionMinor>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Lcid>0</Lcid>
+      <Isolated>false</Isolated>
+    </COMReference>
+  </ItemGroup>-->
+
+netcoreapp3.1
+
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Excel.dll">
+      <Guid>00020813-0000-0000-c000-000000000046</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>9</VersionMinor>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Lcid>0</Lcid>
+      <Isolated>false</Isolated>
+    </COMReference>
+  </ItemGroup>
+
+
+net471
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>9</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+
+
+
+
+
+
+
+  <ItemGroup>
+        <COMReference Include="Microsoft.Office.Excel.dll">
+            <Guid>00020813-0000-0000-c000-000000000046</Guid>
+            <VersionMajor>1</VersionMajor>
+            <VersionMinor>9</VersionMinor>
+            <WrapperTool>tlbimp</WrapperTool>
+            <Lcid>0</Lcid>
+            <Isolated>false</Isolated>
+            <EmbedInteropTypes>True</EmbedInteropTypes>
+        </COMReference>
+    </ItemGroup>
+
+    <ItemGroup>
+        <COMReference Include="Microsoft.Office.Interop.Excel">
+            <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+            <VersionMajor>1</VersionMajor>
+            <VersionMinor>7</VersionMinor>
+            <Lcid>0</Lcid>
+            <WrapperTool>primary</WrapperTool>
+            <Isolated>False</Isolated>
+            <EmbedInteropTypes>True</EmbedInteropTypes>
+        </COMReference>
+    </ItemGroup>
+
+
+
+<ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+
+... more references
+
+</ItemGroup>
+
+
+<COMReference Include="Microsoft.Office.Core">
+    ...
+    <EmbedInteropTypes>True</EmbedInteropTypes>
+    <Private>true</Private>
+</COMReference>
+
+
+
+
+
+
+
+https://renenyffenegger.ch/notes/Microsoft/dot-net/namespaces-classes/Microsoft/Office/Interop/Excel/index
+
+{
+  "runtimeOptions": {
+    "tfm": "netcoreapp3.0",
+    "framework": {
+      "name": "Microsoft.NETCore.App",
+      "version": "3.0.0"
+    }
+  }
+}
+
+PS P:\ath\to\dir> dotnet.exe intro.dll
+
+
+https://stackoverflow.com/questions/58130446/net-core-3-0-and-ms-office-interop
+
+
+
+
+object excel2 = Activator.CreateInstance(Type.GetTypeFromProgID("ExcelComInterop.Console", true));
+excel2.GetType().InvokeMember("Visible", BindingFlags.SetProperty, Type.DefaultBinder, excel2, new object[] { true });
+Console.WriteLine("Press Enter to close Excel.");
+Console.ReadLine();
+excel2.GetType().InvokeMember("Quit", BindingFlags.InvokeMethod, null, excel2, null);
+
+
+
+https://www.dotnetperls.com/excel
+
+            // Open Excel and get first worksheet.
+            var application = new Application();
+            var workbook = application.Workbooks.Open(fileName);
+            var worksheet = workbook.Worksheets[1] as
+                Microsoft.Office.Interop.Excel.Worksheet;
+
+            // Add chart.
+            var charts = worksheet.ChartObjects() as
+                Microsoft.Office.Interop.Excel.ChartObjects;
+            var chartObject = charts.Add(60, 10, 300, 300) as
+                Microsoft.Office.Interop.Excel.ChartObject;
+            var chart = chartObject.Chart;
+
+            // Set chart range.
+            var range = worksheet.get_Range(topLeft, bottomRight);
+            chart.SetSourceData(range);
+
+            // Set chart properties.
+            chart.ChartType = Microsoft.Office.Interop.Excel.XlChartType.xlLine;
+            chart.ChartWizard(Source: range,
+                Title: graphTitle,
+                CategoryTitle: xAxis,
+                ValueTitle: yAxis);
+
+            // Save.
+            workbook.Save();
