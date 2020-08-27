@@ -1,0 +1,2 @@
+﻿https://devblogs.microsoft.com/visualstudio/visual-studio-2019-v16-8-preview-2/
+https://docs.microsoft.com/en-us/visualstudio/ide/reference/options-text-editor-csharp-advanced?view=vs-2019#editor-help
