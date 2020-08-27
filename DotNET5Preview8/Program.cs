@@ -12,7 +12,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
 
-Console.WriteLine("Hello World!");
+Console.WriteLine("Hello World from SinjulMSBH .. !!!!");
 
 FromWhom();
 
@@ -40,9 +40,12 @@ static IHostBuilder CreateHostBuilder(string[] args) =>
     Host.CreateDefaultBuilder(args)
         .ConfigureLogging(logging =>
         {
+            logging.ClearProviders();
+
             logging.AddJsonConsole(options =>
             {
-                options.JsonWriterOptions = new JsonWriterOptions() {
+                options.JsonWriterOptions = new JsonWriterOptions
+                {
                     Indented = true,
                     SkipValidation = false,
                 };
