@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Push Notitications With Notify.js</title>
+
+    <script src="notify.js"></script>
+
+    <style>
+        #alinkopen{
+            cursor: pointer;
+            color:cadetblue;     
+            font-size: 310%;
+            margin-right: 22px;
+        }
+        #alinkcolse{
+            cursor: pointer;
+            color:blueviolet;     
+            font-size: 310%;
+            display: none;
+        }
+    </style>
+</head>
+<body>  
+
+    <h1>Send notification with Notify.js from SinjulMSBH .. !!!!</h1>
+
+    <a 
+        onclick="show()" 
+        id="alinkopen">
+        Show Notification
+    </a>
+  
+    <a 
+        onclick="hide()" 
+        id="alinkcolse">
+        Hide Notification
+    </a>
+
+    <script>
+
+        function getTitle (){
+            return "Hello world from SinjulMSBH .. !!!!";
+        }
+
+        // Required parameters => title (string) - notification title
+        const myNotification = new Notify(getTitle(), {
+            notifyShow: onNotifyShow,
+            body: "Go to my personal website => SinjulMSBH.ir .. !!!!",
+            data: 'SinjulMSBH',               
+            icon: '/SinjulMSBH.jpg',
+            link: "http://pushnotification.jackslater.ir",
+            tag: 'SinjulMSBH',
+            requireInteraction: true,
+            closeOnClick: true,
+            renotify: true,
+            image: "/SinjulMSBH.jpg",
+            dir: 'rtl', // auto => adopts the browser's language setting behaviour (the default.), ltr, rtl
+            lang: 'en-US',
+            requireInteraction: true,
+            timestamp: Math.floor(Date.now()),
+            //timeout: 8000,
+            vibrate: [100, 50, 100],
+            maxActions: 2,
+            silent: false,
+            notifyClick: function () {
+                console.log('onClick');
+                window.focus();
+                hide();
+                // window.location.href = "http://pushnotification.jackslater.ir";
+                window.open('https://localhost:5001/index3.html');
+            },
+            notifyClose: function () {
+                hide();
+                this.close();
+                console.log('onClose');
+            },
+            notifyError: function () {
+                console.log('onError');
+            },
+            notifyShow: function () {
+                console.log('onShow');
+            },
+        });
+
+        function onNotifyShow() {
+            console.log('notification was shown .. !!!!');
+        }
+
+        if (!Notify.needsPermission) {
+            // show();
+        } else if (Notify.isSupported()) {
+            Notify.requestPermission(onPermissionGranted, onPermissionDenied);
+        }
+
+        function onPermissionGranted() {
+            console.log('Permission has been granted by the user');
+            show();
+        }
+
+        function onPermissionDenied() {
+            console.warn('Permission has been denied by the user');
+        }
+
+        function show(){
+            document.getElementById("alinkopen").style.display = "none";
+            document.getElementById("alinkcolse").style.display = "block";          
+
+            myNotification.show();        
+        }
+
+        function hide(){                        
+            document.getElementById("alinkopen").style.display = "block";
+            document.getElementById("alinkcolse").style.display = "none";
+
+            myNotification.close();
+        }
+
+    </script>
+
+</body>
+</html>

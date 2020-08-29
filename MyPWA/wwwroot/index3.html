@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Push Notitications With Notification API .. !!!!</title>
+
+    <style>
+        #alinkopen{
+            cursor: pointer;
+            color:cadetblue;     
+            font-size: 310%;
+            margin-right: 22px;
+        }
+        #alinkcolse{
+            cursor: pointer;
+            color:blueviolet;     
+            font-size: 310%;
+            display: none;
+        }
+    </style>
+</head>
+<body>  
+
+    <h1>Send notification with Notification API from SinjulMSBH .. !!!!</h1>
+    
+    <a 
+        onclick="show()" 
+        id="alinkopen">
+        Show Notification
+    </a>
+  
+    <a 
+        onclick="hide()" 
+        id="alinkcolse">
+        Hide Notification
+    </a>
+
+    <script>
+
+            // request permission on page load
+            document.addEventListener('DOMContentLoaded', function() {
+                if (!Notification) {
+                    alert('Desktop notifications not available in your browser. Try Chromium .. !!!!');
+                    return;
+                }    
+            });  
+
+            const maxActions = Notification.maxActions;
+            console.log('This device can display at most ' + maxActions + ' actions on each notification .. !!!!');
+
+            function getTitle (){
+                return "Hello world from SinjulMSBH .. !!!!";
+            }
+             
+            let notification;
+
+            function show(){                 
+                
+                document.getElementById("alinkopen").style.display = "none";
+                document.getElementById("alinkcolse").style.display = "block";
+
+                notification =  new Notification(getTitle(), {
+                body: "Go to my personal website => SinjulMSBH.ir .. !!!!",
+                data: {
+                    dateOfArrival: Date.now(),
+                    primaryKey: 13
+                },
+                // Failed to construct 'Notification':
+                // Actions are only supported for persistent notifications shown
+                // using ServiceWorkerRegistration.showNotification().
+                // actions: [
+                //     {
+                //         action: 'explore', title: 'Explore this new world',
+                //         icon: 'images/checkmark.png'
+                //     },
+                //     {
+                //         action: 'close', title: 'Close notification',
+                //         icon: 'images/xmark.png'
+                //     },
+                // ], 
+                icon: "/SinjulMSBH.jpg",
+                link: "http://pushnotification.jackslater.ir",
+                tag: 'SinjulMSBH',
+                image: "/SinjulMSBH.jpg",
+                dir: 'rtl', // auto => adopts the browser's language setting behaviour (the default.), ltr, rtl
+                lang: 'en-US',
+                requireInteraction: true,
+                closeOnClick: true,
+                renotify: true,
+                maxActions: 2,
+                timeout: 4000,
+                vibrate: [100, 50, 100],
+                silent: false,
+                timestamp: Math.floor(Date.now()),   
+                              
+            });
+
+            notification.onclick = (event) => {
+                console.log('onClick');
+                hide();
+                // window.location.href = "http://pushnotification.jackslater.ir";
+                window.open('http://pushnotification.jackslater.ir');
+            };
+            notification.onclose = (event) => {
+                hide();
+                console.log('onClose');
+                // notification.close();
+                // or with a timeout:
+                setTimeout(notification.close(), 1 * 1000)
+            };
+            notification.onerror = (event) => {
+                console.log('onError');
+            };
+            notification.onshow = (event) => {
+                console.log('onShow');
+            };
+
+            const process = (permission) => {
+                if (permission === "granted") {
+                    // ok we can show the permission
+                    notification.show();
+                }
+            }
+
+            // Let's check if the browser supports notifications
+            if (!("Notification" in window)) {
+                console.log("This browser does not support desktop notification");
+            }
+            // default, granted, denied
+            console.log(Notification.permission);
+            if(Notification.permission === "granted"){
+                // notification.show();
+            }
+            else if(window.Notification && Notification.permission !== "denied" || Notification.permission === "default"){
+                Notification.requestPermission().then(status => {
+                    console.log('Notification permission status:', status);
+                    // status is "granted", if accepted by user
+                    if (status === "granted"){
+                        notification.show();
+                    }
+                })
+                Notification.requestPermission(permission => {
+                    // Whatever the user answers, we make sure we store the information
+                    if(!('permission' in Notification)) {
+                        Notification.permission = permission;
+                    }
+                    process(permission);
+                })
+                    .then(permission => process(permission)
+                )
+            }
+            else {
+                alert(`Permission is ${Notification.permission} .. !!!!`);
+            }
+        };
+   
+        function hide(){
+            notification.close();
+            document.getElementById("alinkopen").style.display = "block";
+            document.getElementById("alinkcolse").style.display = "none";
+        };
+        
+   </script>
+</body>
+</html>

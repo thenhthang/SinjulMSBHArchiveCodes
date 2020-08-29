@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Push Notitications With Push.js</title>
+
+    <script src="push.min.js"></script>
+    <script src="serviceWorker.min.js"></script>
+
+    <style>
+        #alinkopen{
+            cursor: pointer;
+            color:cadetblue;     
+            font-size: 310%;
+            margin-right: 22px;
+        }
+        #alinkcolse{
+            cursor: pointer;
+            color:blueviolet;     
+            font-size: 310%;
+            display: none;
+        }
+    </style>
+</head>
+<body>  
+
+    <h1>Send notification with Push.js from SinjulMSBH .. !!!!</h1>
+
+    <a 
+        onclick="show()" 
+        id="alinkopen">
+        Show Notification
+    </a>
+  
+    <a 
+        onclick="hide()" 
+        id="alinkcolse">
+        Hide Notification
+    </a>
+
+    <script>
+
+        function onGranted(){
+            console.log(Push.Permission.GRANTED); // 'granted'
+        };
+
+        function onDenied(){
+            console.log(Push.Permission.DENIED); // 'denied'
+        };
+
+        function getTitle (){
+            return "Hello world from SinjulMSBH .. !!!!";
+        }
+
+        function show(){
+
+            // Push.Permission.DEFAULT; // 'default'
+            Push.Permission.has();
+            Push.Permission.request(onGranted, onDenied);
+
+            console.info(Push.Permission);
+            console.log(Push.Permission.get());
+
+            document.getElementById("alinkopen").style.display = "none";
+            document.getElementById("alinkcolse").style.display = "block";
+
+            Push.create(getTitle(), {
+                body: "Go to my personal website => SinjulMSBH.ir .. !!!!",
+                data: 'SinjulMSBH',             
+                icon: '/SinjulMSBH.jpg',
+                link: "http://pushnotification.jackslater.ir",
+                tag: 'SinjulMSBH',
+                image: "/SinjulMSBH.jpg",
+                dir: 'rtl', // auto => adopts the browser's language setting behaviour (the default.), ltr, rtl
+                lang: 'en-US',
+                requireInteraction: true,
+                closeOnClick: true,
+                renotify: true,
+                maxActions: 2,
+                //timeout: 8000,
+                vibrate: [100, 50, 100],
+                silent: false,
+                timestamp: Math.floor(Date.now()),
+                onClick: function () {
+                    console.log('onClick');
+                    window.focus();
+                    hide();
+                    // window.location.href = "http://pushnotification.jackslater.ir";
+                    window.open('https://localhost:5001/index2.html');
+                },
+                onClose: function () {
+                    hide();
+                    this.close();
+                    console.log('onClose');
+                },
+                onError: function () {
+                    console.log('onError');
+                },
+                onShow: function () {
+                    console.log('onShow');
+                },
+            });
+
+            // Push.config({
+            //     serviceWorker: 'node_modules\push.js\bin\serviceWorker.min.js', // Sets a custom service worker script
+            //     fallback: function(payload) {
+            //         // Code that executes on browsers with no notification support
+            //         // "payload" is an object containing the 
+            //         // title, body, tag, and icon of the notification 
+            //     }
+            // });            
+
+            // var promise = Push.create('Hello World!');
+            // promise.then(function(notification) {
+            //     notification.close();
+            // });
+        }
+
+        function hide(){                        
+            Push.close('SinjulMSBH');
+            Push.clear();
+            document.getElementById("alinkopen").style.display = "block";
+            document.getElementById("alinkcolse").style.display = "none";
+        }
+
+    </script>
+
+</body>
+</html>

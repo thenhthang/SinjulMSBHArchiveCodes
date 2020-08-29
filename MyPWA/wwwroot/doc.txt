@@ -1,0 +1,8 @@
+ngrok http http://127.0.0.1:8080 -host-header=”127.0.0.1:8080”
+
+https://notifications.spec.whatwg.org/
+https://www.html5rocks.com/en/tutorials/notifications/quick/#toc-examples
+https://developer.mozilla.org/en-US/docs/Web/API/notification
+https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/showNotification
+
+https://developers.google.com/web/ilt/pwa/introduction-to-push-notifications-slides
