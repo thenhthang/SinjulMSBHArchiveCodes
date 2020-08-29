@@ -1,0 +1,80 @@
+﻿https://blog.atulr.com/web-notifications/
+https://medium.com/izettle-engineering/beginners-guide-to-web-push-notifications-using-service-workers-cb3474a17679
+https://github.com/a7ul/web-push-demo/tree/master/backend
+https://github.com/a7ul/web-push-demo/tree/master/frontend
+
+
+
+In Firefox console you should see:
+
+{
+  "endpoint":"https://updates.push.services.mozilla.com:443/wpush/v1/<some_id>",
+  "keys":{
+    "auth":"<some key>",
+    "p256dh":"<some key>"
+  }
+}
+The value of subscription will be null if the web app has not subscribed to the push service.
+
+In Chrome console you would see an error:
+
+Error DOMException: Registration failed - missing applicationServerKey, and gcm_sender_id not found in manifest
+
+
+
+Generating VAPID Keys
+
+To generate a set of private and public VAPID keys:
+
+npm install -g web-push
+web-push generate-vapid-keys
+This should print out something like this:
+
+=======================================
+
+Public Key:
+BJ5IxJBWdeqFDJTvrZ4wNRu7UY2XigDXjgiUBYEYVXDudxhEs0ReOJRBcBHsPYgZ5dyV8VjyqzbQKS8V7bUAglk
+
+Private Key:
+ERIZmc5T5uWGeRxedxu92k3HnpVwy_RCnQfgek1x2Y4
+
+=======================================
+
+
+Now refresh and unregister/re-register the service worker. Click on “Ask Permission”. You should see in your console.
+
+{
+  "endpoint" : "https://fcm.googleapis.com/fcm/send/<some id>",
+  "expirationTime" : null,
+  "keys": {
+    "p256dh" : "<some key>",
+    "auth" : "<some key>"
+  }
+}
+
+=======================================
+mE ==>
+
+{"endpoint":"https://am3p.notify.windows.com/w/?token=BQYAAAC1sl68jmfu6DLhxHUVEBgX6wL3m78oXlNTcGm4pNs6A12g8WgxA3o0DMKpx1zGEHUeYg1pg4hS4hJeyHLMPcXWhMlrYnBJyyc0ZooBd4puSsEVvjSk31YWrykYpzbi%2bxVmgUT3NSRzmCwoG9GYQNeBuNidfjr%2fVZ5OuzYHuRSVVjRGU9ocxwxomN%2fpfojhHjdvWTxlsjq%2bnrtpMBU8PklsXUcExeIHj6ptl7tHKgJXnkDO%2bMniDGKzlekUkeZRLzAbGC5dZUFoXmAcRpWrzjgzer0%2bayWVLGq8jIgQRp%2fHsrds%2f2dixqzHFJJmaI64R6c%3d","expirationTime":null,"keys":{"p256dh":"BEoVTmc1xCxcxAhiahu7wXJED4gC4vHExZFEKsoXtXj4MtoM7Fx7kmFwGQ40W4Lo4Hl4entgdHAbW4Q5aUMZI3c","auth":"9TFaqZlVHvZqqJB0mmxxmA"}}
+
+=======================================
+
+
+PushSubscription {
+endpoint: "https://am3p.notify.windows.com/w/?token=BQYAAABI0…qDSMGlHSoB0%2fLS92rK5W4BkQGGxB%2bcWK6hbC%2fW9s%3d", expirationTime: null, options: PushSubscriptionOptions}
+endpoint: "https://am3p.notify.windows.com/w/?token=BQYAAABI0%2frLwdUmO60h4DM6iggPTpp9kx7div2J0iuPgRTn9dC7umZXCIrD3kpniGo3FHRC1cDIGmYc%2fMnh5%2bYwV6YzRjj4VG3njZRwNpSh36zx84hFEFysUOCZyvWMc2xiF4XbPJ9R6TinXRC91pLxqgiX9KzVKvkAlN0YkRbM2phI1kNpMowikRvuZ8NFzWFCtxaxDte1oEMqtgTOalq7Vl%2byguPkm99ZX9uoDHyKfu81frgPPJwO6DWzgudCxclv8iH%2f96MxR9tjh2ZlUaVZXSZvnJBqDSMGlHSoB0%2fLS92rK5W4BkQGGxB%2bcWK6hbC%2fW9s%3d"
+expirationTime: null
+options: PushSubscriptionOptions {userVisibleOnly: true, applicationServerKey: ArrayBuffer(65)}
+__proto__: PushSubscription
+
+=======================================
+
+ME: ==>
+
+Public Key:
+BOuaJVm_tasycblrGc-XRk9wxP1L3opVAAfix_hB0kzbDgcH65g9AzYQLNSLpOYGQEJHVqHCOAm3OQJ147_hEGY
+
+Private Key:
+On8MclrZV-svNC1ZnHHAvwRJZziHkrfOm9ooQp3HlRo
+
+=======================================

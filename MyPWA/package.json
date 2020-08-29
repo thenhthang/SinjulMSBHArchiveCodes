@@ -1,0 +1,7 @@
+{
+  "name": "myproject",
+  "version": "1.0.0",
+  "devDependencies": {
+    "web-push": "^3.4.4"
+  }
+}
