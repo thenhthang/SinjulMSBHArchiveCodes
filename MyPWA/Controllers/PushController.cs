@@ -1,9 +1,10 @@
 ﻿
-using System.Diagnostics.CodeAnalysis;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Microsoft.VisualBasic;
 
 using WebPush;
 
@@ -12,35 +13,6 @@ namespace MyPWA.Controllers
     [ApiController]
     public class PushController : ControllerBase
     {
-        [HttpPost(nameof(SaveSubscription))]
-        public OkObjectResult SaveSubscription(
-            string subscription,
-            [FromServices] IConfiguration configuration)
-        {
-            string payload = Request.Form["payload"].ToString();
-            string device = subscription;
-
-            string vapidPublicKey = configuration.GetSection("VapidKeys:PublicKey")["PublicKey"];
-            string vapidPrivateKey = configuration.GetSection("VapidKeys:PrivateKey")["PrivateKey"];
-
-            PushSubscription pushSubscription =
-                new PushSubscription(
-                    "device.PushEndpoint",
-                    "device.PushP256DH",
-                    "device.PushAuth");
-
-            VapidDetails vapidDetails =
-                new VapidDetails(
-                    "mailto:Sinjul.MSBH@Yahoo.Com",
-                    vapidPublicKey,
-                    vapidPrivateKey);
-
-            WebPushClient webPushClient = new WebPushClient();
-            webPushClient.SendNotification(pushSubscription, payload, vapidDetails);
-
-            return Ok(new { message = "success" });
-        }
-
         [HttpGet(nameof(GenerateKeys))]
         public OkObjectResult GenerateKeys()
         {
@@ -53,6 +25,43 @@ namespace MyPWA.Controllers
             };
 
             return Ok(result);
+        }
+
+
+        [HttpGet(nameof(SaveSubscription))]
+        public async Task<OkObjectResult> SaveSubscription(
+                                    [FromServices] IConfiguration configuration
+        )
+        {
+            string payload =
+                JsonSerializer.Serialize(
+                    new
+                    {
+                        title = "SinjulMSBH",
+                        message = "Hello from SinjulMSBH .. !!!!"
+                    })
+            ;
+
+            string vapidPublicKey = configuration["VapidKeys:PublicKey"];
+            string vapidPrivateKey = configuration["VapidKeys:PrivateKey"];
+            string vapidP256dh = configuration["VapidKeys:P256dh"];
+            string vapidAuth = configuration["VapidKeys:Auth"];
+            string vapidEndpoint = configuration["VapidKeys:Endpoint"];
+
+            PushSubscription pushSubscription =
+                new PushSubscription(vapidEndpoint, vapidP256dh, vapidAuth)
+            ;
+
+            VapidDetails vapidDetails =
+                new VapidDetails(
+                    "mailto:Sinjul.MSBH@Yahoo.Com",
+                    vapidPublicKey,
+                    vapidPrivateKey);
+
+            WebPushClient webPushClient = new WebPushClient();
+            await webPushClient.SendNotificationAsync(pushSubscription, payload, vapidDetails);
+
+            return Ok(new { message = "success" });
         }
     }
 }

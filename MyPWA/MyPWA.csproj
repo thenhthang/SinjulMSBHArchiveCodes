@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\PushAPI\jquery.js" />
     <Content Remove="wwwroot\PushAPI\service.js" />
   </ItemGroup>
 
@@ -13,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\PushAPI\jquery.js" />
     <None Include="wwwroot\PushAPI\service.js" />
   </ItemGroup>
 
