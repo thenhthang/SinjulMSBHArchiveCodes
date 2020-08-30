@@ -1,5 +1,5 @@
 ﻿const applicationServerPublicKey = 'BCeIp5WJkDLy_2HizdSKX7euoItMfz8erK3jG362igiLstqq87qzIRcjxWxeV4tEYLMbCEJsh1L0LanEE3oOVz4';
-const serviceWorker = 'sw.js';
+const serviceWorker = 'serviceWorker.js';
 
 const docReady = fn => {
     if (document.readyState === "complete" || document.readyState === "interactive") {
@@ -8,6 +8,8 @@ const docReady = fn => {
         document.addEventListener("DOMContentLoaded", fn);
     }
 };
+
+window.addEventListener('load', () => { });
 
 docReady(async () => {
     const permission = await Notification.requestPermission();
@@ -37,19 +39,20 @@ docReady(async () => {
 });
 
 const urlB64ToUint8Array = async base64String => {
-    var padding = '='.repeat((4 - base64String.length % 4) % 4);
-    var base64 = (base64String + padding)
+    const padding = '='.repeat((4 - base64String.length % 4) % 4);
+    const base64 = (base64String + padding)
         .replace(/\-/g, '+')
         .replace(/_/g, '/');
 
-    var rawData = window.atob(base64);
-    var outputArray = new Uint8Array(rawData.length);
+    let rawData = window.atob(base64);
+    let outputArray = new Uint8Array(rawData.length);
 
-    for (var i = 0; i < rawData.length; ++i) {
+    for (let i = 0; i < rawData.length; ++i) {
         outputArray[i] = rawData.charCodeAt(i);
     }
+
     return outputArray;
 }
 
-let base64Encode = async arrayBuffer =>
+const base64Encode = async arrayBuffer =>
     btoa(String.fromCharCode.apply(null, new Uint8Array(arrayBuffer)));

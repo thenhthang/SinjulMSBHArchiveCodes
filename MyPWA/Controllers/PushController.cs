@@ -14,7 +14,7 @@ namespace MyPWA.Controllers
     public class PushController : ControllerBase
     {
         [HttpGet(nameof(GenerateKeys))]
-        public OkObjectResult GenerateKeys()
+        public JsonResult GenerateKeys()
         {
             VapidDetails keys = VapidHelper.GenerateVapidKeys();
 
@@ -24,7 +24,11 @@ namespace MyPWA.Controllers
                 keys.PrivateKey
             };
 
-            return Ok(result);
+            JsonSerializerOptions jsonSerializerOptions =
+                new JsonSerializerOptions { PropertyNamingPolicy = null }
+            ;
+
+            return new JsonResult(result, jsonSerializerOptions);
         }
 
 
@@ -33,6 +37,27 @@ namespace MyPWA.Controllers
                                     [FromServices] IConfiguration configuration
         )
         {
+            IConfigurationSection configVapidKeysOptionsSection =
+                configuration.GetSection("ConfigVapidKeysOptions");
+
+            var configVapidKeysOptionsBind = new
+            {
+                publicKey = configVapidKeysOptionsSection["PublicKey"],
+                privateKey = configVapidKeysOptionsSection["PrivateKey"],
+                subject = configVapidKeysOptionsSection["Subject"],
+                endpoint = configVapidKeysOptionsSection["Endpoint"],
+                keys = new
+                {
+                    p256dh = configVapidKeysOptionsSection["Keys:P256dh"],
+                    auth = configVapidKeysOptionsSection["Keys:Auth"],
+                },
+                options = new
+                {
+                    gcmAPIKey = configVapidKeysOptionsSection["Options:gcmAPIKey"],
+                    TTL = configVapidKeysOptionsSection["Options:TTL"],
+                }
+            };
+
             string payload =
                 JsonSerializer.Serialize(
                     new
@@ -42,26 +67,27 @@ namespace MyPWA.Controllers
                     })
             ;
 
-            string vapidPublicKey = configuration["VapidKeys:PublicKey"];
-            string vapidPrivateKey = configuration["VapidKeys:PrivateKey"];
-            string vapidP256dh = configuration["VapidKeys:P256dh"];
-            string vapidAuth = configuration["VapidKeys:Auth"];
-            string vapidEndpoint = configuration["VapidKeys:Endpoint"];
-
             PushSubscription pushSubscription =
-                new PushSubscription(vapidEndpoint, vapidP256dh, vapidAuth)
+                new PushSubscription(
+                    configVapidKeysOptionsBind.endpoint,
+                    configVapidKeysOptionsBind.keys.p256dh,
+                    configVapidKeysOptionsBind.keys.auth)
             ;
 
             VapidDetails vapidDetails =
                 new VapidDetails(
-                    "mailto:Sinjul.MSBH@Yahoo.Com",
-                    vapidPublicKey,
-                    vapidPrivateKey);
+                    configVapidKeysOptionsBind.subject,
+                    configVapidKeysOptionsBind.publicKey,
+                    configVapidKeysOptionsBind.privateKey
+                )
+            ;
 
-            WebPushClient webPushClient = new WebPushClient();
-            await webPushClient.SendNotificationAsync(pushSubscription, payload, vapidDetails);
+            await new WebPushClient().
+                SendNotificationAsync(pushSubscription, payload, vapidDetails)
+            ;
 
-            return Ok(new { message = "success" });
+
+            return Ok(new { message = "Success, Send message from SinjulMSBH .. !!!!" });
         }
     }
 }
