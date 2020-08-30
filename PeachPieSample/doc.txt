@@ -1,0 +1,79 @@
+﻿
+
+https://github.com/iolevel/peachpie-wordpress
+
+docker run --name mysql -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=wordpress -p 3306:3306 -d mysql:tag
+
+
+
+Starting a MySQL instance is simple:
+docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:tag
+
+
+
+
+
+"https://feed.peachpie.io/wpdotnet/v3/index.json" 
+dotnet nuget add source https://feed.peachpie.io/wpdotnet/v3/index.json -n "peachpie.io wpdotnet"
+dotnet add package syntaxhighlighter --version 3.5.4-*
+
+
+
+
+
+
+
+
+فیلترهای مهم و کاربردی دیده‌بان بازار بورس | میثم محمدی - Meisam Mohammadi
+https://meisam-mohammadi.com/bourse-filters/
+
+.:TSETMC:. :: دیده بان بازار پیشرفته
+http://www.tsetmc.com/Loader.aspx?ParTree=15131F#
+
+ASP.NET Core with WordPress - PeachPie Documentation
+https://docs.peachpie.io/scenarios/wordpress/aspnetcore-wordpress/
+
+GitHub - iolevel/peachpie-wordpress: WordPress running on .NET Core.
+https://github.com/iolevel/peachpie-wordpress
+
+Configuration - PeachPie Documentation
+https://docs.peachpie.io/scenarios/wordpress/configuration/
+
+Sign in to your account
+https://login.microsoftonline.com/common/oauth2/authorize?response_type=code&redirect_uri=https%3A%2F%2Fdeploy.azure.com%2F&client_id=abfa0a7c-a6b6-4736-8310-5855508787cd&resource=https%3A%2F%2Fmanagement.core.windows.net%2F&scope=user_impersonation+openid&nonce=6785cff5-153e-4372-08d8-4cfeb42e1154&site_id=500879&response_mode=form_post&state=%2F%3Frepository%3Dhttps%3A%2F%2Fgithub.com%2Fiolevel%2Fazure-wpdotnet
+
+PeachPie Visual Studio Extension - Visual Studio Marketplace
+https://marketplace.visualstudio.com/items?itemName=iolevel.peachpie-vs
+
+PeachPie Visual Studio Extension - Visual Studio Marketplace
+https://marketplace.visualstudio.com/items?itemName=iolevel.peachpie-vs
+
+GitHub - peachpiecompiler/peachpie: PeachPie - the PHP compiler and runtime for .NET and .NET Core
+https://github.com/peachpiecompiler/peachpie
+
+Wordpress on .NET Core | On .NET | Channel 9
+https://channel9.msdn.com/Shows/On-NET/Wordpress-on-NET-Core
+
+Resources – WP.NET | WordPress on .NET Core
+https://www.wpdotnet.com/resources/
+
+GitHub - iolevel/peachpie-samples: Sample projects demonstrating use of Peachpie - the PHP compiler and runtime for .NET
+https://github.com/iolevel/peachpie-samples
+
+GitHub - iolevel/wpdotnet-sdk: WordPress compiled to .NET Standard. SDK for ASP.NET Core.
+https://github.com/iolevel/wpdotnet-sdk
+
+NuGet Gallery | PeachPied.WordPress.AspNetCore 1.0.0-beta992
+https://www.nuget.org/packages/PeachPied.WordPress.AspNetCore/1.0.0-beta992
+
+mysql - Docker Hub
+https://hub.docker.com/_/mysql
+
+
+
+
+
+
+
+
+
