@@ -105,10 +105,8 @@ namespace MySignalR.Hubs
 
     public class ChatHub : Hub
     {
-        public async Task SendMessage(string user, string message)
-        {
+        public async Task SendMessage(string user, string message) =>
             await Clients.All.SendAsync("ReceiveMessage", user, message);
-        }
 
         public async Task SendMessage2(string message)
         {
@@ -118,6 +116,10 @@ namespace MySignalR.Hubs
                 Message = message
             });
         }
+
+
+        public async Task SendFileData(string path, string fileName) => 
+            await Clients.All.SendAsync("ReceiveFileData", path, fileName);
 
 
         public override async Task OnConnectedAsync()

@@ -87,6 +87,24 @@ connection.on("UserState", req =>
     console.log(`UserId: ${req.userId} and ConnectionId: ${req.connectionId} and Status: ${req.status}`)
 );
 
+connection.on("ReceiveFileData", (path, fileName) => {
+    const res = `Path: ${path} and FileName: ${fileName}`;
+    console.log(res)
+    let messageFileList = document.getElementById("messageFileList");
+    const sp = document.createElement("div");
+    sp.textContent = fileName;
+    const a = document.createElement('a');
+    const link = document.createTextNode("Download File");
+    a.appendChild(link);
+    a.download = "SinjulMSBH";
+    a.title = "Download File";
+    a.href = `Uploads/${fileName}`;
+    a.classList.add("d-block");
+    a.classList.add("mb-2");
+    messageFileList.appendChild(sp);
+    messageFileList.appendChild(a);
+});
+
 const start = async () => {
     try {
         await connection.start();
@@ -121,83 +139,29 @@ document.getElementById("sendButton").addEventListener("click", async event => {
     const user = document.getElementById("userInput").value;
     const message = document.getElementById("messageInput").value;
     try {
-        //await connection.invoke("SendMessage", user, message);
-        await connection.invoke("SendMessage2", message);
+        await connection.invoke("SendMessage", user, message);
+        //await connection.invoke("SendMessage2", message);
     } catch (err) {
         return console.error(err.toString());
     }
     event.preventDefault();
 });
 
-
-//const uploadFile = () => {
-//    const myFile = document.getElementById("myFile");
-//    let formData = new FormData();
-//    if (myFile.files.length > 0) {
-//        for (var i = 0; i < myFile.files.length; i++) {
-//            console.log(myFile.files[i]);
-//            formData.append('file-' + i, myFile.files[i]);
-//        }
-//    }
-
-//    var fd = new FormData();
-//    var files = myFile[0].files[0];
-//    fd.append('file', files);
-
-//    fetch('https://localhost:44387/Upload', {
-//        method: 'POST',
-//        //headers: { 'Content-Type': 'application/json' },
-//        body: formData
-//    })
-//        .then((response) => response.json())
-//        .then((body) => {
-//            console.log('Success:', body);
-//        })
-//        .catch((error) => {
-//            console.error('Error:', error);
-//        })
-//        ;
-//};
-
-
-
-
-
-
-
-
-//const uploadFile = async () => {
-//    const myFile = document.getElementById("myFile");
-//    let formData = new FormData();
-//    if (myFile.files.length > 0) {
-//        for (var i = 0; i < myFile.files.length; i++) {
-//            formData.append('file-' + i, myFile.files[i]);
-//        }
-//    }
-//    try {
-//        const fetch = await fetch('https://localhost:44387/Upload', {
-//            method: 'POST',
-//            headers: { 'Content-Type': 'application/json' },
-//            body: formData
-//        });
-//        console.info(fetch);
-//        //const body = fetch.json();
-//        //console.log('Success:', body);
-//    } catch (err) {
-//        console.error('Error:', err);
-//    }
-//};
-
-
-
-document.getElementById('submit').addEventListener("click", (evt) => {
-    evt.preventDefault();
-    let data = new FormData(document.forms[0]);
-    fetch('https://localhost:44387/', {
-        method: 'post',
-        body: data
-    })
-        .then(() => {
-            alert('Posted using Fetch');
+document.getElementById('submit').addEventListener("click", async event => {
+    event.preventDefault();
+    const loading = document.getElementById("loading");
+    loading.innerText = "Please wait .. !!!!";
+    let formData = new FormData(document.forms[0]);
+    try {
+        let response = await fetch('https://localhost:44387/', {
+            method: 'POST',
+            body: formData
         });
+        let data = await response.json();
+        console.log('Success:', data);
+        loading.innerText = "";
+        await connection.invoke("SendFileData", data.path, data.fileName);
+    } catch (err) {
+        console.error('Error:', err);
+    }
 });

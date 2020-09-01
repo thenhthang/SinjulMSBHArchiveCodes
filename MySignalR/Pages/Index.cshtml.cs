@@ -54,18 +54,18 @@ namespace MySignalR.Pages
         public IFormFile UploadedFile { get; set; }
         public async Task<JsonResult> OnPostAsync()
         {
-            string filename =
+            string fileName =
                 ContentDispositionHeaderValue.Parse(UploadedFile.ContentDisposition)
                 .FileName.Trim('"')
             ;
 
-            filename = EnsureCorrectFilename(filename);
+            fileName = EnsureCorrectFilename(fileName);
 
-            using FileStream output = System.IO.File.Create(GetPathAndFilename(filename));
+            using FileStream output = System.IO.File.Create(GetPathAndFilename(fileName));
 
             await UploadedFile.CopyToAsync(output);
 
-            return new JsonResult(new { fileUrl = filename });
+            return new JsonResult(new { path = GetPath(), fileName });
         }
 
         private static string EnsureCorrectFilename(string filename)
@@ -75,6 +75,9 @@ namespace MySignalR.Pages
 
             return filename;
         }
+
+        private string GetPath() =>
+            $"{_webHostEnvironment.WebRootPath}\\uploads\\";
 
         private string GetPathAndFilename(string filename) =>
             $"{_webHostEnvironment.WebRootPath}\\uploads\\{filename}";
