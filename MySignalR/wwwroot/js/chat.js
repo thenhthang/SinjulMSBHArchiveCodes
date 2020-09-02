@@ -71,6 +71,8 @@ connection.on("ReceiveMessage", (user, message) => {
     const li = document.createElement("li");
     li.textContent = encodedMsg;
     document.getElementById("messagesList").appendChild(li);
+    if (isStatusGranted)
+        showNotification(`UserId: ${user}`, `Message: ${message}`);
 });
 
 connection.on("ReceiveMessage2", req => {
@@ -80,12 +82,16 @@ connection.on("ReceiveMessage2", req => {
         const li = document.createElement("li");
         li.textContent = encodedMsg;
         document.getElementById("messagesList").appendChild(li);
+        if (isStatusGranted)
+            showNotification(`UserId: ${req.sender}`, `Message: ${msg}`);
     }
 });
 
-connection.on("UserState", req =>
+connection.on("UserState", req => {
     console.log(`UserId: ${req.userId} and ConnectionId: ${req.connectionId} and Status: ${req.status}`)
-);
+    if (isStatusGranted)
+        showNotification(`UserId: ${req.userId}`, `ConnectionId: ${req.connectionId} and Status: ${req.status}`);
+});
 
 connection.on("ReceiveFileData", (path, fileName) => {
     const res = `Path: ${path} and FileName: ${fileName}`;
@@ -103,7 +109,11 @@ connection.on("ReceiveFileData", (path, fileName) => {
     a.classList.add("mb-2");
     messageFileList.appendChild(sp);
     messageFileList.appendChild(a);
+    if (isStatusGranted)
+        showNotification(`Upload File Successfully .. !!!!`, `Path: ${path} and FileName: ${fileName}`);
 });
+
+let isStatusGranted = false;
 
 const start = async () => {
     try {
@@ -111,6 +121,10 @@ const start = async () => {
         console.log("connected");
         console.assert(connection.state === signalR.HubConnectionState.Connected);
         document.getElementById("sendButton").disabled = false;
+
+        const statusNotification = await StatusNotification();
+        if (statusNotification === "granted") isStatusGranted = true;
+
     } catch (err) {
         console.assert(connection.state === signalR.HubConnectionState.Disconnected);
         console.log(err);
@@ -165,3 +179,27 @@ document.getElementById('submit').addEventListener("click", async event => {
         console.error('Error:', err);
     }
 });
+
+const StatusNotification = async () => {
+    if (!Notification || !window.Notification || !("Notification" in window)) {
+        console.warn("This browser does not support desktop notification");
+        return "denied";
+    }
+    else if (Notification.permission !== "denied" || Notification.permission === "default") {
+        const status = await Notification.requestPermission();
+        if (status === "granted") {
+            console.log('Notification permission status:', status);
+            return status;
+        }
+    }
+    else {
+        console.warn(`Permission is ${Notification.permission} .. !!!!`);
+        return "denied";
+    }
+};
+
+const showNotification = (title, body) =>
+    new Notification(title, {
+        body: body,
+        icon: "https://avatars3.githubusercontent.com/u/22368395?s=460&u=67f254ebada1cfa404a7ee93500a3baae9819bf3&v=4",
+    });
