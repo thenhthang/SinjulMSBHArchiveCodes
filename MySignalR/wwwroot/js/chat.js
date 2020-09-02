@@ -122,9 +122,11 @@ const start = async () => {
         console.assert(connection.state === signalR.HubConnectionState.Connected);
         document.getElementById("sendButton").disabled = false;
 
-        const statusNotification = await StatusNotification();
-        if (statusNotification === "granted") isStatusGranted = true;
-
+        const status = await statusNotification();
+        if (status === "granted") {
+            isStatusGranted = true;
+            showNotification(`User: ${connection.connectionId} is start .. !!!!`);
+        }
     } catch (err) {
         console.assert(connection.state === signalR.HubConnectionState.Disconnected);
         console.log(err);
@@ -138,6 +140,9 @@ const stop = async () => {
         console.assert(connection.state === signalR.HubConnectionState.Disconnected);
         console.log("stop");
         await connection.stop();
+
+        if (isStatusGranted)
+            showNotification(`User: ${connection.connectionId} is stop .. !!!!`);
     } catch (err) {
         console.assert(connection.state === signalR.HubConnectionState.Connecting);
         console.log(err);
@@ -180,7 +185,7 @@ document.getElementById('submit').addEventListener("click", async event => {
     }
 });
 
-const StatusNotification = async () => {
+const statusNotification = async () => {
     if (!Notification || !window.Notification || !("Notification" in window)) {
         console.warn("This browser does not support desktop notification");
         return "denied";
