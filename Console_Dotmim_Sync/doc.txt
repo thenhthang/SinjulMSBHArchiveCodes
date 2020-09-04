@@ -1,0 +1,8 @@
+﻿
+https://dev.to/mimetis/how-to-synchronize-relational-databases-with-dotmim-sync-5693
+
+Use AdventureWorks;
+Update Product set Name = 'HL Road Frame - Black, 58 V2' where ProductId = 680;
+Insert into ProductCategory (Name) Values ('Mono wheels')
+
+

@@ -3,7 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.128
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dotmim_Sync", "Dotmim_Sync\Dotmim_Sync.csproj", "{360E518B-EBCF-4C97-94F9-051A083A1B03}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Console_Dotmim_Sync", "Console_Dotmim_Sync\Console_Dotmim_Sync.csproj", "{B606A60B-2DC0-49C9-950F-412D80F935FE}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{360E518B-EBCF-4C97-94F9-051A083A1B03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{360E518B-EBCF-4C97-94F9-051A083A1B03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{360E518B-EBCF-4C97-94F9-051A083A1B03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{360E518B-EBCF-4C97-94F9-051A083A1B03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B606A60B-2DC0-49C9-950F-412D80F935FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B606A60B-2DC0-49C9-950F-412D80F935FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B606A60B-2DC0-49C9-950F-412D80F935FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B606A60B-2DC0-49C9-950F-412D80F935FE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection

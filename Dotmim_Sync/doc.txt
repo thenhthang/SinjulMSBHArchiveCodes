@@ -1,0 +1,13 @@
+﻿https://dev.to/mimetis/how-to-synchronize-relational-databases-with-dotmim-sync-part-2-1gba
+
+
+dotnet add package Dotmim.Sync.SqlServer
+dotnet add package Dotmim.Sync.Web.Server
+
+
+The client side is pretty the same as our starter project.
+We just need to:
+
+Add a the Dotmim.Sync.Web.Client package to be able to use the WebClientOrchestrator proxy client.
+Change or server provider from SqlServerProvider to WebClientOrchestrator
+[Optional] : Remove our dependency to Dotmim.Sync.SqlServer since we are not using it anymore.
