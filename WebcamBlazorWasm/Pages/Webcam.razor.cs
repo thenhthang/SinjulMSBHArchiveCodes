@@ -7,6 +7,8 @@
         public string PhotoId { get; set; }
         public int Width { get; set; }
         public int Height { get; set; }
+        public bool VideoEnable { get; set; }
+        public bool AudioEnable { get; set; }
         public string Filter { get; set; }
     }
 }

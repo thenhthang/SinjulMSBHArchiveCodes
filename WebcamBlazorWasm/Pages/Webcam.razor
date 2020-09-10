@@ -13,7 +13,7 @@
         </canvas>
     </section>
 
-    <section class="output">
+    <section>
         <img id="photo" alt="The screen capture will appear in this box ..">
     </section>
 
@@ -55,16 +55,19 @@
     {
         options.Width = 480;
         options.Height = 360;
+
+        options.VideoEnable = true;
+        options.AudioEnable = false;
+
         options.Filter = 
-            $" brightness(150%)" +
+            $" brightness(200%)" +
             $" contrast(130%)" +
-            $" sepia(0.4)" +  
-            $" blur(2px)" +
-            $" saturate(130%)" 
+            $" sepia(0.8)" +  
+            $" blur(1px)" +
+            $" saturate(170%)" 
         ;
 
-        @*
-        options.Filter = 
+        @*options.Filter = 
             $"brightness(2)" +
             $" contrast(1.3)" +
             $" sepia(0.4)" +
@@ -87,7 +90,7 @@
 
     public async Task TakePicture()
     {
-        await JSRuntime.InvokeVoidAsync("WebCamFunctions.takePicture", options);
+        await JSRuntime.InvokeVoidAsync("WebCamFunctions.takePicture");
     }
 
 }

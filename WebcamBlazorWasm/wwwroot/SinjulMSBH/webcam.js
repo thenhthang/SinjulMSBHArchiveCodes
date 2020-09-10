@@ -6,7 +6,7 @@ let context = null;
 let streaming = false;
 let width = 0;
 let height = 0;
-let filter = 'sepia(1)';
+let filter = null;
 
 const onStart = async options => {
 
@@ -22,8 +22,8 @@ const onStart = async options => {
         const stream =
             await navigator.mediaDevices.getUserMedia(
                 {
-                    video: true,
-                    audio: true
+                    video: options.videoEnable,
+                    audio: options.audioEnable
                 }
             );
         video.srcObject = stream;
