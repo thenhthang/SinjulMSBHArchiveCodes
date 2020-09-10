@@ -1,0 +1,13 @@
+﻿h1, button, video {
+    font-family: 'Comic Sans MS';
+}
+
+canvas {
+    background-color: lightgray;
+}
+
+
+video {
+    background-color: lightblue;
+    visibility: hidden;
+}
