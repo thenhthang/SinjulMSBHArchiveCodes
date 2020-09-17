@@ -3,7 +3,36 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.128
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{37AF6A18-3E53-482F-8FD4-D08BF9096473}"
+	ProjectSection(SolutionItems) = preProject
+		help.txt = help.txt
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkerService", "WorkerService\WorkerService.csproj", "{CD7C6CFC-A4A8-4142-AB11-716F4200D273}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqliteMigrations", "SqliteMigrations\SqliteMigrations.csproj", "{A5AA2FB1-CBDF-49B0-839C-2DB56837EEC3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlServerMigrations", "SqlServerMigrations\SqlServerMigrations.csproj", "{ED0F3389-672B-4D3B-8D5D-EC18E0767047}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CD7C6CFC-A4A8-4142-AB11-716F4200D273}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD7C6CFC-A4A8-4142-AB11-716F4200D273}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD7C6CFC-A4A8-4142-AB11-716F4200D273}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD7C6CFC-A4A8-4142-AB11-716F4200D273}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5AA2FB1-CBDF-49B0-839C-2DB56837EEC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5AA2FB1-CBDF-49B0-839C-2DB56837EEC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5AA2FB1-CBDF-49B0-839C-2DB56837EEC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5AA2FB1-CBDF-49B0-839C-2DB56837EEC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED0F3389-672B-4D3B-8D5D-EC18E0767047}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED0F3389-672B-4D3B-8D5D-EC18E0767047}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED0F3389-672B-4D3B-8D5D-EC18E0767047}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED0F3389-672B-4D3B-8D5D-EC18E0767047}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection

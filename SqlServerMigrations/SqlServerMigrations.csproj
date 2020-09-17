@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <BaseOutputPath>..\WorkerService\bin\</BaseOutputPath>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\WorkerService\WorkerService.csproj" />
+    </ItemGroup>
+
+</Project>

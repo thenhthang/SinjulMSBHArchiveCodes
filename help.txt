@@ -1,0 +1,393 @@
+https://docs.microsoft.com/en-us/ef/core/what-is-new/ef-core-5.0/whatsnew
+https://docs.microsoft.com/en-us/ef/core/miscellaneous/cli/powershell
+https://docs.microsoft.com/en-us/ef/core/miscellaneous/cli/dotnet
+https://docs.microsoft.com/en-us/ef/core/managing-schemas/migrations/projects?tabs=dotnet-core-cli
+https://docs.microsoft.com/en-us/ef/core/managing-schemas/migrations/managing?tabs=dotnet-core-cli
+https://docs.microsoft.com/en-us/ef/core/managing-schemas/migrations/teams
+https://docs.microsoft.com/en-us/ef/core/managing-schemas/migrations/operations
+https://docs.microsoft.com/en-us/ef/core/managing-schemas/migrations/operations
+https://docs.microsoft.com/en-us/ef/core/managing-schemas/migrations/history-table
+https://docs.microsoft.com/en-us/ef/core/managing-schemas/migrations/providers?tabs=dotnet-core-cli
+https://docs.microsoft.com/en-us/ef/core/managing-schemas/ensure-created
+https://www.youtube.com/watch?v=mSsGERmrhnE
+https://www.google.com/search?sxsrf=ALeKk01qAO8N8reiZJhu3b0gZRr-a0WWLQ%3A1600320328653&ei=SPNiX6-jJ-WMlwTfm6uIBQ&q=%40bricelambs++&oq=%40bricelambs++&gs_lcp=CgZwc3ktYWIQAzIECCMQJ1C4rAhYuKwIYOavCGgBcAB4AIABvgGIAcsFkgEDMC40mAEAoAEBqgEHZ3dzLXdpesABAQ&sclient=psy-ab&ved=0ahUKEwiv59zlue_rAhVlxoUKHd_NClEQ4dUDCA0&uact=5
+https://devblogs.microsoft.com/dotnet/the-future-of-net-standard/
+https://github.com/ErikEJ/EFCorePowerTools/wiki
+https://www.youtube.com/watch?v=OWuP_qOYwsk
+https://github.com/ErikEJ/EFCorePowerTools/wiki
+https://6figuredev.com/
+https://www.bricelam.net/links/
+
+
+
+
+
+
+
+
+https://docs.microsoft.com/en-us/ef/core/miscellaneous/cli/powershell
+Entity Framework Core tools reference - Package Manager Console in Visual Studio
+
+
+dotnet ef migrations add NewMigration --project SqlServerMigrations
+
+
+dotnet ef migrations add AddBlogCreatedTimestamp
+Add-Migration AddBlogCreatedTimestamp
+
+dotnet ef migrations add InitialCreate --namespace Your.Namespace
+Add-Migration InitialCreate -Namespace Your.Namespace
+
+dotnet ef migrations remove
+Remove-Migration
+
+dotnet ef migrations list
+
+dotnet ef migrations add InitialCreate --context MyDbContext --output-dir Migrations/SqlServerMigrations
+dotnet ef migrations add InitialCreate --context MySqliteDbContext --output-dir Migrations/SqliteMigrations
+Add-Migration InitialCreate -Context MyDbContext -OutputDir Migrations\SqlServerMigrations
+Add-Migration InitialCreate -Context MySqliteDbContext -OutputDir Migrations\SqliteMigrations
+
+<ItemGroup>
+  <PackageReference Include="Microsoft.AspNetCore.App" />
+  <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.3" />
+  <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.2" />
+</ItemGroup>
+
+
+Install-Package Microsoft.EntityFrameworkCore.Tools
+Update-Package Microsoft.EntityFrameworkCore.Tools
+
+Get-Help command.
+Get-Help about_EntityFrameworkCore
+
+ASP.NET Core environment
+To specify the environment for ASP.NET Core projects, set env:ASPNETCORE_ENVIRONMENT before running commands.
+
+Common parameters
+The following table shows parameters that are common to all of the EF Core commands:
+-Context <String>	The DbContext class to use. Class name only or fully qualified with namespaces. If this parameter is omitted, EF Core finds the context class. If there are multiple context classes, this parameter is required.
+-Project <String>	The target project. If this parameter is omitted, the Default project for Package Manager Console is used as the target project.
+-StartupProject <String>	The startup project. If this parameter is omitted, the Startup project in Solution properties is used as the target project.
+-Args <String>	Arguments passed to the application. Added in EF Core 5.0.
+-Verbose	Show verbose output.	
+
+Add-Migration
+Adds a new migration.
+-Name <String>	The name of the migration. This is a positional parameter and is required.
+-OutputDir <String>	The directory use to output the files. Paths are relative to the target project directory. Defaults to "Migrations".
+-Namespace <String>	The namespace to use for the generated classes. Defaults to generated from the output directory. Added in EF Core 5.0.
+
+Drop-Database
+Drops the database.
+-WhatIf	Show which database would be dropped, but don't drop it.
+
+Get-DbContext
+Lists and gets information about available DbContext types.
+
+Get-Migration
+Lists available migrations. Added in EF Core 5.0.
+-Connection <String>	The connection string to the database. Defaults to the one specified in AddDbContext or OnConfiguring.
+-NoConnect	Don't connect to the database.
+
+Remove-Migration
+Removes the last migration (rolls back the code changes that were done for the migration).
+-Force	Revert the migration (roll back the changes that were applied to the database).
+
+Scaffold-DbContext
+Generates code for a DbContext and entity types for a database. In order for Scaffold-DbContext to generate an entity type, the database table must have a primary key.
+-Connection <String>	The connection string to the database. For ASP.NET Core 2.x projects, the value can be name=<name of connection string>. In that case the name comes from the configuration sources that are set up for the project. This is a positional parameter and is required.
+-Provider <String>	The provider to use. Typically this is the name of the NuGet package, for example: Microsoft.EntityFrameworkCore.SqlServer. This is a positional parameter and is required.
+-OutputDir <String>	The directory to put files in. Paths are relative to the project directory.
+-ContextDir <String>	The directory to put the DbContext file in. Paths are relative to the project directory.
+-Namespace <String>	The namespace to use for all generated classes. Defaults to generated from the root namespace and the output directory. Added in EF Core 5.0.
+-ContextNamespace <String>	The namespace to use for the generated DbContext class. Note: overrides -Namespace. Added in EF Core 5.0.
+-Context <String>	The name of the DbContext class to generate.
+-Schemas <String[]>	The schemas of tables to generate entity types for. If this parameter is omitted, all schemas are included.
+-Tables <String[]>	The tables to generate entity types for. If this parameter is omitted, all tables are included.
+-DataAnnotations	Use attributes to configure the model (where possible). If this parameter is omitted, only the fluent API is used.
+-UseDatabaseNames	Use table and column names exactly as they appear in the database. If this parameter is omitted, database names are changed to more closely conform to C# name style conventions.
+-Force	Overwrite existing files.
+-NoOnConfiguring	Don't generate DbContext.OnConfiguring. Added in EF Core 5.0.
+-NoPluralize	Don't use the pluralizer. Added in EF Core 5.0.
+
+Example:
+Scaffold-DbContext "Server=(localdb)\mssqllocaldb;Database=Blogging;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+Example that scaffolds only selected tables and creates the context in a separate folder with a specified name and namespace:
+Scaffold-DbContext "Server=(localdb)\mssqllocaldb;Database=Blogging;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -Tables "Blog","Post" -ContextDir Context -Context BlogContext -ContextNamespace New.Namespace
+
+Script-DbContext
+Generates a SQL script from the DbContext. Bypasses any migrations. Added in EF Core 3.0.
+-Output <String>	The file to write the result to.
+
+Script-Migration
+Generates a SQL script that applies all of the changes from one selected migration to another selected migration.
+-From <String>	The starting migration. Migrations may be identified by name or by ID. The number 0 is a special case that means before the first migration. Defaults to 0.
+-To <String>	The ending migration. Defaults to the last migration.
+-Idempotent	Generate a script that can be used on a database at any migration.
+-NoTransactions	Don't generate SQL transaction statements. Added in EF Core 5.0.
+-Output <String>	The file to write the result to. IF this parameter is omitted, the file is created with a generated name in the same folder as the app's runtime files are created, for example: /obj/Debug/netcoreapp2.1/ghbkztfz.sql/.
+
+The To, From, and Output parameters support tab-expansion.
+The following example creates a script for the InitialCreate migration, using the migration name.
+Script-Migration -To InitialCreate
+The following example creates a script for all migrations after the InitialCreate migration, using the migration ID.
+Script-Migration -From 20180904195021_InitialCreate
+
+Update-Database
+Updates the database to the last migration or to a specified migration.
+-Migration <String>	The target migration. Migrations may be identified by name or by ID. The number 0 is a special case that means before the first migration and causes all migrations to be reverted. If no migration is specified, the command defaults to the last migration.
+-Connection <String>	The connection string to the database. Defaults to the one specified in AddDbContext or OnConfiguring. Added in EF Core 5.0.
+The following example reverts all migrations.
+Update-Database -Migration 0
+The following examples update the database to a specified migration. The first uses the migration name and the second uses the migration ID and a specified connection:
+Update-Database -Migration InitialCreate
+Update-Database -Migration 20180904195021_InitialCreate -Connection your_connection_string
+
+
+
+https://docs.microsoft.com/en-us/ef/core/miscellaneous/cli/dotnet
+Entity Framework Core tools reference - .NET Core CLI
+
+dotnet tool install --global dotnet-ef
+
+dotnet add package Microsoft.EntityFrameworkCore.Design
+
+dotnet add package Microsoft.EntityFrameworkCore.Design -v 1.1.6
+
+Verify installation
+Run the following commands to verify that EF Core CLI tools are correctly installed:
+dotnet restore
+dotnet ef
+
+ASP.NET Core environment
+Default version 5 : Development
+To specify the environment for ASP.NET Core projects, set the ASPNETCORE_ENVIRONMENT environment variable before running commands.
+
+Common options
+COMMON OPTIONS
+Option	Short	Description
+--json		Show JSON output.
+--context <DBCONTEXT>	-c	The DbContext class to use. Class name only or fully qualified with namespaces. If this option is omitted, EF Core will find the context class. If there are multiple context classes, this option is required.
+--project <PROJECT>	-p	Relative path to the project folder of the target project. Default value is the current folder.
+--startup-project <PROJECT>	-s	Relative path to the project folder of the startup project. Default value is the current folder.
+--framework <FRAMEWORK>		The Target Framework Moniker for the target framework. Use when the project file specifies multiple target frameworks, and you want to select one of them.
+--configuration <CONFIGURATION>		The build configuration, for example: Debug or Release.
+--runtime <IDENTIFIER>		The identifier of the target runtime to restore packages for. For a list of Runtime Identifiers (RIDs), see the RID catalog.
+--no-build		Don't build the project. Intended to be used when the build is up-to-date.
+--help	-h	Show help information.
+--verbose	-v	Show verbose output.
+--no-color		Don't colorize output.
+--prefix-output		Prefix output with level.
+Starting in EF Core 5.0, any additional arguments are passed to the application.
+
+dotnet ef database update
+Arguments:
+
+DOTNET EF DATABASE UPDATE
+Argument	Description
+<MIGRATION>	The target migration. Migrations may be identified by name or by ID. The number 0 is a special case that means before the first migration and causes all migrations to be reverted. If no migration is specified, the command defaults to the last migration.
+Options:
+
+DOTNET EF DATABASE UPDATE
+Argument	Description
+<MIGRATION>	The target migration. Migrations may be identified by name or by ID. The number 0 is a special case that means before the first migration and causes all migrations to be reverted. If no migration is specified, the command defaults to the last migration.
+Option	Description
+--connection <CONNECTION>	The connection string to the database. Defaults to the one specified in AddDbContext or OnConfiguring. Added in EF Core 5.0.
+dotnet ef database update InitialCreate
+dotnet ef database update 20180904195021_InitialCreate --connection your_connection_string
+
+dotnet ef dbcontext info
+dotnet ef dbcontext list
+
+dotnet ef dbcontext scaffold
+Arguments:
+
+DOTNET EF DBCONTEXT SCAFFOLD
+Argument	Description
+<CONNECTION>	The connection string to the database. For ASP.NET Core 2.x projects, the value can be name=<name of connection string>. In that case the name comes from the configuration sources that are set up for the project.
+<PROVIDER>	The provider to use. Typically this is the name of the NuGet package, for example: Microsoft.EntityFrameworkCore.SqlServer.
+
+Options:
+
+DOTNET EF DBCONTEXT SCAFFOLD
+Option	Short	Description
+--data-annotations	-d	Use attributes to configure the model (where possible). If this option is omitted, only the fluent API is used.
+--context <NAME>	-c	The name of the DbContext class to generate.
+--context-dir <PATH>		The directory to put the DbContext class file in. Paths are relative to the project directory. Namespaces are derived from the folder names.
+--context-namespace <NAMESPACE>		The namespace to use for the generated DbContext class. Note: overrides --namespace. Added in EF Core 5.0.
+--force	-f	Overwrite existing files.
+--output-dir <PATH>	-o	The directory to put entity class files in. Paths are relative to the project directory.
+--namespace <NAMESPACE>	-n	The namespace to use for all generated classes. Defaults to generated from the root namespace and the output directory. Added in EF Core 5.0.
+--schema <SCHEMA_NAME>...		The schemas of tables to generate entity types for. To specify multiple schemas, repeat --schema for each one. If this option is omitted, all schemas are included.
+--table <TABLE_NAME>...	-t	The tables to generate entity types for. To specify multiple tables, repeat -t or --table for each one. If this option is omitted, all tables are included.
+--use-database-names		Use table and column names exactly as they appear in the database. If this option is omitted, database names are changed to more closely conform to C# name style conventions.
+--no-onconfiguring		Suppresses generation of the OnConfiguring method in the generated DbContext class. Added in EF Core 5.0.
+--no-pluralize		Don't use the pluralizer. Added in EF Core 5.0
+
+dotnet ef dbcontext scaffold "Server=(localdb)\mssqllocaldb;Database=Blogging;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -o Models
+dotnet ef dbcontext scaffold "Server=(localdb)\mssqllocaldb;Database=Blogging;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -o Models -t Blog -t Post --context-dir Context -c BlogContext --context-namespace New.Namespace
+
+dotnet ef dbcontext script
+Option	Short	Description
+--output <FILE>	-o	The file to write the result to.
+
+dotnet ef migrations add
+Argument	Description
+<NAME>	The name of the migration.
+Option	Short	Description
+--output-dir <PATH>	-o	The directory use to output the files. Paths are relative to the target project directory. Defaults to "Migrations".
+--namespace <NAMESPACE>	-n	The namespace to use for the generated classes. Defaults to generated from the output directory. Added in EF Core 5.0.
+
+dotnet ef migrations list
+Option	Description
+--connection <CONNECTION>	The connection string to the database. Defaults to the one specified in AddDbContext or OnConfiguring. Added in EF Core 5.0.
+--no-connect	Don't connect to the database. Added in EF Core 5.0.
+
+dotnet ef migrations remove
+Option	Short	Description
+--force	-f	Revert the migration (roll back the changes that were applied to the database).
+
+dotnet ef migrations script
+Arguments:
+
+DOTNET EF MIGRATIONS SCRIPT
+Argument	Description
+<FROM>	The starting migration. Migrations may be identified by name or by ID. The number 0 is a special case that means before the first migration. Defaults to 0.
+<TO>	The ending migration. Defaults to the last migration.
+Options:
+DOTNET EF MIGRATIONS SCRIPT
+Option	Short	Description
+--output <FILE>	-o	The file to write the script to.
+--idempotent	-i	Generate a script that can be used on a database at any migration.
+--no-transactions		Don't generate SQL transaction statements. Added in EF Core 5.0.
+
+The following example creates a script for the InitialCreate migration:
+dotnet ef migrations script 0 InitialCreate
+The following example creates a script for all migrations after the InitialCreate migration.
+dotnet ef migrations script 20180904195021_InitialCreate
+
+
+Flow arguments into IDesignTimeDbContextFactory
+Arguments are now flowed from the command line into the CreateDbContext method of IDesignTimeDbContextFactory. For example, to indicate this is a dev build, a custom argument (e.g. dev) can be passed on the command line:
+dotnet ef migrations add two --verbose --dev
+public class MyDbContextFactory : IDesignTimeDbContextFactory<SomeDbContext>
+{
+    public SomeDbContext CreateDbContext(string[] args)
+        => new SomeDbContext(args.Contains("--dev"));
+}
+
+
+
+SqlServerMigrations
+Add-Migration RemovePersonEmail
+Add-Migration RemovePersonIndex -Args "--provider Sqlite"
+dotnet ef add migration M1 -- --provider Sqlite
+
+Get-Migration
+dotnet ef migrations list -p .\SqlServerMigrations -s .\WorkerService
+dotnet ef migrations list -p SqlServerMigrations -s WorkerService
+
+Script-Migration
+Script-Migration InitialCrate
+Script-Migration -Idempotent
+Script-Migration InitialCreate -Args "--provider SqlServer"
+
+Update-Database
+Update-Database -Args "--environment Production"
+Update-Database -Connection "Data Source=(local)\\MSSQLSERVER;Initial Catalog=WorkerService1"
+Update-Database --provider Sqlite -Connection "Data Source=EFCore5Migrations.db"
+
+Script-DbContext
+
+Update-Database 0 
+Update-Database -verb
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <UserSecretsId>dotnet-WorkerService1-8A1D0B09-629F-4DB3-95A4-160E6FD7CBFA</UserSecretsId>
+        <!--<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>-->
+        <!--<DockerfileContext>..\SinjulMSBHArchiveCodes</DockerfileContext>-->
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0-rc.1.20451.14" />
+
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.0-rc.1.20451.13" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.0-rc.1.20451.13" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.0-rc.1.20451.13" />
+    </ItemGroup>
+
+    <!--<ItemGroup>
+      <ProjectReference Include="..\SinjulMSBHArchiveCodes\SqlServerMigrations\SqlServerMigrations.csproj" />
+      <ProjectReference Include="..\SqliteMigrations\SqliteMigrations.csproj" />
+    </ItemGroup>-->
+</Project>
+
+
+
+
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <baseOutputPath>..\WorkerService1\bin\</baseOutputPath>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\WorkerService1\WorkerService1.csproj" />
+    </ItemGroup>
+
+    <!--<ItemGroup>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.0-rc.1.20451.13" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.0-rc.1.20451.13" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.0-rc.1.20451.13" />
+    </ItemGroup>-->
+
+</Project>
+
+
+
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <baseOutputPath>..\WorkerService1\bin\</baseOutputPath>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\WorkerService1\WorkerService1.csproj" />
+    </ItemGroup>
+
+    <!--<ItemGroup>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.0-rc.1.20451.13" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.0-rc.1.20451.13" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.0-rc.1.20451.13" />
+    </ItemGroup>-->
+
+</Project>
+
+
+
+
+SqliteMigrations
+SqlServerMigrations
+WorkerService1
