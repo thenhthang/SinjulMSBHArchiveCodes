@@ -1,0 +1,44 @@
+﻿بخش یازدهم- نصب IIS و شروع پیکربندی آن
+https://dotnetlearn.com/fa/Tutorial/IIS-Web-Server-Configuration/%D8%A8%D8%AE%D8%B4-%DB%8C%D8%A7%D8%B2%D8%AF%D9%87%D9%85-%D9%86%D8%B5%D8%A8-IIS-%D9%88-%D8%B4%D8%B1%D9%88%D8%B9-%D9%BE%DB%8C%DA%A9%D8%B1%D8%A8%D9%86%D8%AF%DB%8C-%D8%A2%D9%86#VideoPlayer
+
+مرجع کامل دستورات لینوکس – فارسی - مرکز آموزش - سازمان هاست
+https://sazmanhost.com/KB/379/%D9%85%D8%B1%D8%AC%D8%B9-%DA%A9%D8%A7%D9%85%D9%84-%D8%AF%D8%B3%D8%AA%D9%88%D8%B1%D8%A7%D8%AA-%D9%84%DB%8C%D9%86%D9%88%DA%A9%D8%B3-%E2%80%93-%D9%81%D8%A7%D8%B1%D8%B3%DB%8C#1
+
+مشکل تعداد موجودی انبار و سبد خرید
+https://barnamenevis.org/showthread.php?497828-%D9%85%D8%B4%DA%A9%D9%84-%D8%AA%D8%B9%D8%AF%D8%A7%D8%AF-%D9%85%D9%88%D8%AC%D9%88%D8%AF%DB%8C-%D8%A7%D9%86%D8%A8%D8%A7%D8%B1-%D9%88-%D8%B3%D8%A8%D8%AF-%D8%AE%D8%B1%DB%8C%D8%AF
+
+نکاتی از پشت پرده Thread ها در ASP.Net - ویرگول
+https://virgool.io/@Mirsaeedi/%D9%86%DA%A9%D8%A7%D8%AA%DB%8C-%D8%A7%D8%B2-%D9%BE%D8%B4%D8%AA-%D9%BE%D8%B1%D8%AF%D9%87-thread-%D9%87%D8%A7-%D8%AF%D8%B1-aspnet-bdsetl8ujmy7
+
+آموزش سی شارپ : کار با Thread ها قسمت 5 : رفع مشکل Concurrency
+https://programming.tosinso.com/fa/articles/32990/%d8%a2%d9%85%d9%88%d8%b2%d8%b4-%d8%b3%db%8c-%d8%b4%d8%a7%d8%b1%d9%be-%da%a9%d8%a7%d8%b1-%d8%a8%d8%a7-thread-%d9%87%d8%a7-%d9%82%d8%b3%d9%85%d8%aa-5-%d8%b1%d9%81%d8%b9-%d9%85%d8%b4%da%a9%d9%84-concurrency
+
+آموزش ترد در سی شارپ - آموزش برنامه نویسی
+https://programchi.ir/2017/05/01/%D8%A2%D9%85%D9%88%D8%B2%D8%B4-%D8%AA%D8%B1%D8%AF-%D8%AF%D8%B1-%D8%B3%DB%8C-%D8%B4%D8%A7%D8%B1%D9%BE/
+
+SOLID چیست ؟ - آموزش برنامه نویسی
+https://programchi.ir/2020/07/15/solid-%da%86%db%8c%d8%b3%d8%aa-%d8%9f/
+
+Multithreading با Net.
+https://barnamenevisan.org/Articles/Article2416.html
+
+api-guidelines/Guidelines.md at vNext · microsoft/api-guidelines · GitHub
+https://github.com/microsoft/api-guidelines/blob/vNext/Guidelines.md#51-errors
+
+Debug Your .NET Core Apps in WSL 2 with Visual Studio | .NET Blog
+https://devblogs.microsoft.com/dotnet/debug-your-net-core-apps-in-wsl-2-with-visual-studio/
+
+.NET Core Debugging with WSL 2 - Preview - Visual Studio Marketplace
+https://marketplace.visualstudio.com/items?itemName=ms-azuretools.Dot-Net-Core-Debugging-With-Wsl2
+
+Remote debug .NET Core on Linux - Visual Studio | Microsoft Docs
+https://docs.microsoft.com/en-us/visualstudio/debugger/remote-debugging-dotnet-core-linux-with-ssh?view=vs-2019
+
+An overview on the Windows Subsystem for Linux | Microsoft Docs
+https://docs.microsoft.com/en-us/windows/wsl/
+
+Visual Studio Container Tools on Windows - Visual Studio | Microsoft Docs
+https://docs.microsoft.com/en-us/visualstudio/containers/overview?view=vs-2019
+
+Home page - MyWSL2
+https://localhost:44385/
