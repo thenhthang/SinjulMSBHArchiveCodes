@@ -1,0 +1,92 @@
+{
+    "iisSettings": {
+        "windowsAuthentication": false,
+        "anonymousAuthentication": true,
+        "iisExpress": {
+            "applicationUrl": "http://localhost:57015",
+            "sslPort": 44385
+        }
+    },
+    "profiles": {
+        "IIS Express": {
+            "commandName": "IISExpress",
+            "launchBrowser": true,
+            "environmentVariables": {
+                "ASPNETCORE_ENVIRONMENT": "Development",
+                "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation"
+            }
+        },
+        "MyWSL2": {
+            "commandName": "Project",
+            "launchBrowser": true,
+            "environmentVariables": {
+                "ASPNETCORE_ENVIRONMENT": "Development",
+                "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation"
+            },
+            "dotnetRunMessages": "true",
+            "applicationUrl": "https://localhost:5001;http://localhost:5000"
+        },
+        "Docker": {
+            "commandName": "Docker",
+            "launchBrowser": true,
+            "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
+            "publishAllPorts": true,
+            "useSSL": true
+        },
+        "WSL 2": {
+            "commandName": "WSL2",
+            "launchBrowser": true,
+            "launchUrl": "https://localhost:5001",
+            "environmentVariables": {
+                "ASPNETCORE_URLS": "https://localhost:5001;http://localhost:5000",
+                "ASPNETCORE_ENVIRONMENT": "Development",
+                "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation"
+            },
+            "distributionName": ""
+        },
+        "WSL 2 : Ubuntu 16.04": {
+            "commandName": "WSL2",
+            "launchBrowser": true,
+            "launchUrl": "https://localhost:5001",
+            "environmentVariables": {
+                "ASPNETCORE_URLS": "https://localhost:5001;http://localhost:5000",
+                "ASPNETCORE_ENVIRONMENT": "Development",
+                "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation"
+            },
+            "distributionName": "Ubuntu-16.04"
+        },
+        "WSL 2 : Ubuntu 18.04": {
+            "commandName": "WSL2",
+            "launchBrowser": true,
+            "launchUrl": "https://localhost:5001",
+            "environmentVariables": {
+                "ASPNETCORE_URLS": "https://localhost:5001;http://localhost:5000",
+                "ASPNETCORE_ENVIRONMENT": "Development",
+                "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation"
+            },
+            "distributionName": "Ubuntu-18.04"
+        },
+        "WSL 2 : Ubuntu 20.04": {
+            "commandName": "WSL2",
+            "launchBrowser": true,
+            "launchUrl": "https://localhost:5001",
+            "environmentVariables": {
+                "ASPNETCORE_URLS": "https://localhost:5001;http://localhost:5000",
+                "ASPNETCORE_ENVIRONMENT": "Development",
+                "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation"
+            },
+            "distributionName": "Ubuntu-20.04"
+        },
+        "WSL 2 : Debian": {
+            "commandName": "WSL2",
+            "launchBrowser": true,
+            "launchUrl": "https://localhost:5001",
+            "environmentVariables": {
+                "ASPNETCORE_URLS": "https://localhost:5001;http://localhost:5000",
+                "ASPNETCORE_ENVIRONMENT": "Development",
+                "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation"
+            },
+            "distributionName": "Debian"
+        }
+    }
+}
