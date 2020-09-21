@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>aspnet-EFCore5Concurrency-135E90C6-5F1E-45EB-B791-B45003529B7C</UserSecretsId>
+    <CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="5.0.0-rc.1.20451.17" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.0-rc.1.20451.17" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.0-rc.1.20451.17" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.0-rc.1.20451.17" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.0-rc.1.20451.13" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.0-rc.1.20451.13" />
+  </ItemGroup>
+
+</Project>
