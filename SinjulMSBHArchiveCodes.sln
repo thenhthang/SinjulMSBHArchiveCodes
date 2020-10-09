@@ -3,7 +3,60 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.128
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebFormsMigrations", "WebFormsMigrations\", "{6A8EBE05-F20E-4578-85F6-C2201943FE79}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.7.2"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_15721"
+		Debug.AspNetCompiler.PhysicalPath = "WebFormsMigrations\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_15721\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_15721"
+		Release.AspNetCompiler.PhysicalPath = "WebFormsMigrations\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_15721\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "15721"
+		SlnRelativePath = "WebFormsMigrations\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebFormsMigrationsApp", "WebFormsMigrationsApp\", "{C5AF6549-7784-4B76-966E-210D02BA35A9}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.1"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_18791"
+		Debug.AspNetCompiler.PhysicalPath = "WebFormsMigrationsApp\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_18791\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_18791"
+		Release.AspNetCompiler.PhysicalPath = "WebFormsMigrationsApp\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_18791\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "18791"
+		SlnRelativePath = "WebFormsMigrationsApp\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6A8EBE05-F20E-4578-85F6-C2201943FE79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A8EBE05-F20E-4578-85F6-C2201943FE79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5AF6549-7784-4B76-966E-210D02BA35A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5AF6549-7784-4B76-966E-210D02BA35A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection

@@ -1,0 +1,15 @@
+﻿https://www.youtube.com/watch?v=CZuqMrWSano
+https://www.nuget.org/packages?q=DotVVM
+https://www.nuget.org/packages/DotVVM/2.5.0-preview04-final
+https://www.nuget.org/packages/DotVVM.Core/2.5.0-preview04-final
+https://www.nuget.org/packages/DotVVM.Owin/2.5.0-preview04-final
+https://channel9.msdn.com/Events/dotnetConf/NET-Conf-2019/B321
+https://tomasherceg.com/blog/post/migrating-asp-net-web-forms-apps-to-net-core-using-dotvvm
+https://github.com/riganti/dotvvm-docs
+https://github.com/riganti/dotvvm
+https://github.com/riganti/dotvvm-samples-webforms-migration
+https://www.dotvvm.com/webforms/
+https://github.com/
+https://github.com/telerik/razor-converter
+https://github.com/telerik/razor-converter
+https://stackoverflow.com/questions/4422881/aspx-to-razor-syntax-converter
