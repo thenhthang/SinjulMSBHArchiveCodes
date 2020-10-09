@@ -25,37 +25,28 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebFormsMigrations", "WebFo
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebFormsMigrationsApp", "WebFormsMigrationsApp\", "{C5AF6549-7784-4B76-966E-210D02BA35A9}"
-	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.1"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_18791"
-		Debug.AspNetCompiler.PhysicalPath = "WebFormsMigrationsApp\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_18791\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_18791"
-		Release.AspNetCompiler.PhysicalPath = "WebFormsMigrationsApp\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_18791\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "18791"
-		SlnRelativePath = "WebFormsMigrationsApp\"
-		DefaultWebSiteLanguage = "Visual C#"
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotvvmApplication1", "DotvvmApplication1\DotvvmApplication1.csproj", "{1C7A9914-8CDC-4075-9422-37BD0E51C076}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotvvmApplication2", "DotvvmApplication2\DotvvmApplication2.csproj", "{51D7D4AE-0E34-466B-91EE-7E6958F6AAC4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{6A8EBE05-F20E-4578-85F6-C2201943FE79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6A8EBE05-F20E-4578-85F6-C2201943FE79}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C5AF6549-7784-4B76-966E-210D02BA35A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C5AF6549-7784-4B76-966E-210D02BA35A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A8EBE05-F20E-4578-85F6-C2201943FE79}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A8EBE05-F20E-4578-85F6-C2201943FE79}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{1C7A9914-8CDC-4075-9422-37BD0E51C076}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C7A9914-8CDC-4075-9422-37BD0E51C076}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C7A9914-8CDC-4075-9422-37BD0E51C076}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C7A9914-8CDC-4075-9422-37BD0E51C076}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51D7D4AE-0E34-466B-91EE-7E6958F6AAC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51D7D4AE-0E34-466B-91EE-7E6958F6AAC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51D7D4AE-0E34-466B-91EE-7E6958F6AAC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51D7D4AE-0E34-466B-91EE-7E6958F6AAC4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
