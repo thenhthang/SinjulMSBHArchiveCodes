@@ -3,31 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.128
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebFormsMigrations", "WebFormsMigrations\", "{6A8EBE05-F20E-4578-85F6-C2201943FE79}"
-	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.7.2"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_15721"
-		Debug.AspNetCompiler.PhysicalPath = "WebFormsMigrations\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_15721\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_15721"
-		Release.AspNetCompiler.PhysicalPath = "WebFormsMigrations\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_15721\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "15721"
-		SlnRelativePath = "WebFormsMigrations\"
-		DefaultWebSiteLanguage = "Visual C#"
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotvvmApplication1", "DotvvmApplication1\DotvvmApplication1.csproj", "{1C7A9914-8CDC-4075-9422-37BD0E51C076}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotvvmApplication2", "DotvvmApplication2\DotvvmApplication2.csproj", "{51D7D4AE-0E34-466B-91EE-7E6958F6AAC4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotvvmApplication2", "DotvvmApplication2\DotvvmApplication2.csproj", "{51D7D4AE-0E34-466B-91EE-7E6958F6AAC4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +13,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6A8EBE05-F20E-4578-85F6-C2201943FE79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6A8EBE05-F20E-4578-85F6-C2201943FE79}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6A8EBE05-F20E-4578-85F6-C2201943FE79}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{6A8EBE05-F20E-4578-85F6-C2201943FE79}.Release|Any CPU.Build.0 = Debug|Any CPU
 		{1C7A9914-8CDC-4075-9422-37BD0E51C076}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1C7A9914-8CDC-4075-9422-37BD0E51C076}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C7A9914-8CDC-4075-9422-37BD0E51C076}.Release|Any CPU.ActiveCfg = Release|Any CPU
